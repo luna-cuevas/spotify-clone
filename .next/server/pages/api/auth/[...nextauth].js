@@ -1,65 +1,125 @@
 "use strict";
-/*
- * ATTENTION: An "eval-source-map" devtool has been used.
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 (() => {
 var exports = {};
-exports.id = "pages/api/auth/[...nextauth]";
-exports.ids = ["pages/api/auth/[...nextauth]"];
+exports.id = 748;
+exports.ids = [748];
 exports.modules = {
 
-/***/ "next-auth":
-/*!****************************!*\
-  !*** external "next-auth" ***!
-  \****************************/
-/***/ ((module) => {
-
-module.exports = require("next-auth");
-
-/***/ }),
-
-/***/ "next-auth/providers/spotify":
-/*!**********************************************!*\
-  !*** external "next-auth/providers/spotify" ***!
-  \**********************************************/
-/***/ ((module) => {
-
-module.exports = require("next-auth/providers/spotify");
-
-/***/ }),
-
-/***/ "spotify-web-api-node":
-/*!***************************************!*\
-  !*** external "spotify-web-api-node" ***!
-  \***************************************/
-/***/ ((module) => {
-
-module.exports = require("spotify-web-api-node");
-
-/***/ }),
-
-/***/ "(api)/./lib/spotify.js":
-/*!************************!*\
-  !*** ./lib/spotify.js ***!
-  \************************/
+/***/ 872:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"LOGIN_URL\": () => (/* binding */ LOGIN_URL)\n/* harmony export */ });\n/* harmony import */ var spotify_web_api_node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! spotify-web-api-node */ \"spotify-web-api-node\");\n/* harmony import */ var spotify_web_api_node__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(spotify_web_api_node__WEBPACK_IMPORTED_MODULE_0__);\n\nconst scopes = [\n    \"user-read-email\",\n    \"playlist-read-private\",\n    \"playlist-read-collaborative\",\n    \"user-read-email\",\n    \"streaming\",\n    \"user-read-private\",\n    \"user-library-read\",\n    \"user-top-read\",\n    // \"user-library-modify\",\n    \"user-read-playback-state\",\n    \"user-modify-playback-state\",\n    \"user-read-currently-playing\",\n    \"user-read-recently-played\", \n].join(',');\nconst params = {\n    scope: scopes\n};\nconst queryParamString = new URLSearchParams(params);\nconst LOGIN_URL = \"https://accounts.spotify.com/authorize?\" + queryParamString.toString();\nconst spotifyApi = new (spotify_web_api_node__WEBPACK_IMPORTED_MODULE_0___default())({\n    clientId: \"d292540e570d4d22b57f58539336c62b\",\n    clientSecret: \"3658db533a1747b9a0cfc20cd6764243\"\n});\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (spotifyApi);\n\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9saWIvc3BvdGlmeS5qcy5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQWdEO0FBRWhELEtBQUssQ0FBQ0MsTUFBTSxHQUFHLENBQUM7SUFDWixDQUFpQjtJQUNqQixDQUF1QjtJQUN2QixDQUE2QjtJQUM3QixDQUFpQjtJQUNqQixDQUFXO0lBQ1gsQ0FBbUI7SUFDbkIsQ0FBbUI7SUFDbkIsQ0FBZTtJQUNmLEVBQXlCO0lBQ3pCLENBQTBCO0lBQzFCLENBQTRCO0lBQzVCLENBQTZCO0lBQzdCLENBQTJCO0FBQy9CLENBQUMsQ0FBQ0MsSUFBSSxDQUFDLENBQUc7QUFHVixLQUFLLENBQUNDLE1BQU0sR0FBRyxDQUFDO0lBQ1pDLEtBQUssRUFBRUgsTUFBTTtBQUNmLENBQUM7QUFDRCxLQUFLLENBQUNJLGdCQUFnQixHQUFHLEdBQUcsQ0FBQ0MsZUFBZSxDQUFFSCxNQUFNO0FBRXBELEtBQUssQ0FBQ0ksU0FBUyxHQUFHLENBQXlDLDJDQUFHRixnQkFBZ0IsQ0FBQ0csUUFBUTtBQUd4RixLQUFLLENBQUNDLFVBQVUsR0FBRyxHQUFHLENBQUNULDZEQUFhLENBQUMsQ0FBQztJQUNuQ1UsUUFBUSxFQUFFQyxrQ0FBaUM7SUFDM0NHLFlBQVksRUFBRUgsa0NBQXFDO0FBQ25ELENBQUM7QUFFTCxpRUFBZUYsVUFBVSxFQUFDO0FBRUwiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9saWIvc3BvdGlmeS5qcz85ZGZiIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBTcG90aWZ5V2ViQXBpIGZyb20gXCJzcG90aWZ5LXdlYi1hcGktbm9kZVwiO1xuXG5jb25zdCBzY29wZXMgPSBbXG4gICAgXCJ1c2VyLXJlYWQtZW1haWxcIixcbiAgICBcInBsYXlsaXN0LXJlYWQtcHJpdmF0ZVwiLFxuICAgIFwicGxheWxpc3QtcmVhZC1jb2xsYWJvcmF0aXZlXCIsXG4gICAgXCJ1c2VyLXJlYWQtZW1haWxcIixcbiAgICBcInN0cmVhbWluZ1wiLFxuICAgIFwidXNlci1yZWFkLXByaXZhdGVcIixcbiAgICBcInVzZXItbGlicmFyeS1yZWFkXCIsXG4gICAgXCJ1c2VyLXRvcC1yZWFkXCIsXG4gICAgLy8gXCJ1c2VyLWxpYnJhcnktbW9kaWZ5XCIsXG4gICAgXCJ1c2VyLXJlYWQtcGxheWJhY2stc3RhdGVcIixcbiAgICBcInVzZXItbW9kaWZ5LXBsYXliYWNrLXN0YXRlXCIsXG4gICAgXCJ1c2VyLXJlYWQtY3VycmVudGx5LXBsYXlpbmdcIixcbiAgICBcInVzZXItcmVhZC1yZWNlbnRseS1wbGF5ZWRcIixcbl0uam9pbignLCcpO1xuXG5cbmNvbnN0IHBhcmFtcyA9IHtcbiAgICBzY29wZTogc2NvcGVzLFxuICB9O1xuICBjb25zdCBxdWVyeVBhcmFtU3RyaW5nID0gbmV3IFVSTFNlYXJjaFBhcmFtcyAocGFyYW1zKTtcblxuICBjb25zdCBMT0dJTl9VUkwgPSBcImh0dHBzOi8vYWNjb3VudHMuc3BvdGlmeS5jb20vYXV0aG9yaXplP1wiICsgcXVlcnlQYXJhbVN0cmluZy50b1N0cmluZygpO1xuICAgIFxuXG4gY29uc3Qgc3BvdGlmeUFwaSA9IG5ldyBTcG90aWZ5V2ViQXBpKHtcbiAgICBjbGllbnRJZDogcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQ0xJRU5UX0lELFxuICAgIGNsaWVudFNlY3JldDogcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQ0xJRU5UX1NFQ1JFVCxcbiAgICB9KTtcbiAgICBcbmV4cG9ydCBkZWZhdWx0IHNwb3RpZnlBcGk7XG5cbmV4cG9ydCB7IExPR0lOX1VSTCB9OyJdLCJuYW1lcyI6WyJTcG90aWZ5V2ViQXBpIiwic2NvcGVzIiwiam9pbiIsInBhcmFtcyIsInNjb3BlIiwicXVlcnlQYXJhbVN0cmluZyIsIlVSTFNlYXJjaFBhcmFtcyIsIkxPR0lOX1VSTCIsInRvU3RyaW5nIiwic3BvdGlmeUFwaSIsImNsaWVudElkIiwicHJvY2VzcyIsImVudiIsIk5FWFRfUFVCTElDX0NMSUVOVF9JRCIsImNsaWVudFNlY3JldCIsIk5FWFRfUFVCTElDX0NMSUVOVF9TRUNSRVQiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./lib/spotify.js\n");
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
-/***/ }),
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "default": () => (/* binding */ _nextauth_)
+});
 
-/***/ "(api)/./pages/api/auth/[...nextauth].js":
-/*!*****************************************!*\
-  !*** ./pages/api/auth/[...nextauth].js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+;// CONCATENATED MODULE: external "next-auth"
+const external_next_auth_namespaceObject = require("next-auth");
+var external_next_auth_default = /*#__PURE__*/__webpack_require__.n(external_next_auth_namespaceObject);
+;// CONCATENATED MODULE: external "next-auth/providers/spotify"
+const spotify_namespaceObject = require("next-auth/providers/spotify");
+var spotify_default = /*#__PURE__*/__webpack_require__.n(spotify_namespaceObject);
+;// CONCATENATED MODULE: external "spotify-web-api-node"
+const external_spotify_web_api_node_namespaceObject = require("spotify-web-api-node");
+var external_spotify_web_api_node_default = /*#__PURE__*/__webpack_require__.n(external_spotify_web_api_node_namespaceObject);
+;// CONCATENATED MODULE: ./lib/spotify.js
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var next_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next-auth */ \"next-auth\");\n/* harmony import */ var next_auth__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_auth__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_auth_providers_spotify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next-auth/providers/spotify */ \"next-auth/providers/spotify\");\n/* harmony import */ var next_auth_providers_spotify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_auth_providers_spotify__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _lib_spotify__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../lib/spotify */ \"(api)/./lib/spotify.js\");\n\n\n\nasync function refreshAccessToken(token) {\n    try {\n        _lib_spotify__WEBPACK_IMPORTED_MODULE_2__[\"default\"].setAccessToken(token.accessToken);\n        _lib_spotify__WEBPACK_IMPORTED_MODULE_2__[\"default\"].setAccessToken(token.refreshToken);\n        const { body: refreshedToken  } = await _lib_spotify__WEBPACK_IMPORTED_MODULE_2__[\"default\"].refreshAccessToken();\n        console.log(\"REFRESHED TOKEN IS\", refreshedToken);\n        var _refresh_token;\n        return {\n            ...token,\n            accessToken: refreshedToken.access_token,\n            accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,\n            refreshToken: (_refresh_token = refreshedToken.refresh_token) !== null && _refresh_token !== void 0 ? _refresh_token : token.refreshToken\n        };\n    } catch (error) {\n        console.log(error);\n        return {\n            ...token,\n            error: 'RefreshAccessTokenError'\n        };\n    }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (next_auth__WEBPACK_IMPORTED_MODULE_0___default()({\n    // Configure one or more authentication providers\n    providers: [\n        next_auth_providers_spotify__WEBPACK_IMPORTED_MODULE_1___default()({\n            clientId: \"d292540e570d4d22b57f58539336c62b\",\n            clientSecret: \"3658db533a1747b9a0cfc20cd6764243\",\n            authorization: _lib_spotify__WEBPACK_IMPORTED_MODULE_2__.LOGIN_URL\n        })\n    ],\n    secret: process.env.JWT_SECRET,\n    pages: {\n        signIn: '/login'\n    },\n    callbacks: {\n        async jwt ({ token , account , user ,  }) {\n            if (account && user) {\n                return {\n                    ...token,\n                    accessToken: account.access_token,\n                    refreshToken: account.refresh_token,\n                    username: account.providerAccountId,\n                    accessTokenExpires: account.expires_at * 1000\n                };\n            }\n            if (Date.now() < token.accessTokenExpires) {\n                console.log(\"EXISTING ACCESS TOKEN IS VALID\");\n                return token;\n            }\n            // Access token has expired, so we need to refresh it...\n            console.log(\"ACCESS TOKEN HAS EXPIRED, REFRESHING...\");\n            return await refreshAccessToken(token);\n        },\n        async session ({ session , token  }) {\n            session.user.accessToken = token.accessToken;\n            session.user.refreshToken = token.refreshToken;\n            session.user.username = token.username;\n            return session;\n        }\n    }\n}));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvYXV0aC9bLi4ubmV4dGF1dGhdLmpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFnQztBQUN5QjtBQUNHO2VBRTdDSSxrQkFBa0IsQ0FBQ0MsS0FBSyxFQUFFLENBQUM7SUFDdEMsR0FBRyxDQUFDLENBQUM7UUFDREgsbUVBQXlCLENBQUNHLEtBQUssQ0FBQ0UsV0FBVztRQUMzQ0wsbUVBQXlCLENBQUNHLEtBQUssQ0FBQ0csWUFBWTtRQUU1QyxLQUFLLENBQUMsQ0FBQyxDQUFDQyxJQUFJLEVBQUVDLGNBQWMsRUFBQyxDQUFDLEdBQUcsS0FBSyxDQUFDUix1RUFBNkI7UUFDcEVTLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDLENBQW9CLHFCQUFFRixjQUFjO1lBTTlCQSxjQUE0QjtRQUo5QyxNQUFNLENBQUMsQ0FBQztlQUNETCxLQUFLO1lBQ1JFLFdBQVcsRUFBRUcsY0FBYyxDQUFDRyxZQUFZO1lBQ3hDQyxrQkFBa0IsRUFBRUMsSUFBSSxDQUFDQyxHQUFHLEdBQUdOLGNBQWMsQ0FBQ08sVUFBVSxHQUFHLElBQUk7WUFDL0RULFlBQVksR0FBRUUsY0FBNEIsR0FBNUJBLGNBQWMsQ0FBQ1EsYUFBYSxjQUE1QlIsY0FBNEIsY0FBNUJBLGNBQTRCLEdBQUlMLEtBQUssQ0FBQ0csWUFBWTtRQUNwRSxDQUFDO0lBRUwsQ0FBQyxDQUFDLEtBQUssRUFBQ1csS0FBSyxFQUFFLENBQUM7UUFDWlIsT0FBTyxDQUFDQyxHQUFHLENBQUNPLEtBQUs7UUFFakIsTUFBTSxDQUFDLENBQUM7ZUFDRGQsS0FBSztZQUNSYyxLQUFLLEVBQUUsQ0FBeUI7UUFDcEMsQ0FBQztJQUNMLENBQUM7QUFDTCxDQUFDO0FBRUQsaUVBQWVuQixnREFBUSxDQUFDLENBQUM7SUFDdkIsRUFBaUQ7SUFDakRvQixTQUFTLEVBQUUsQ0FBQztRQUNWbkIsa0VBQWUsQ0FBQyxDQUFDO1lBQ2ZvQixRQUFRLEVBQUVDLGtDQUFpQztZQUMzQ0csWUFBWSxFQUFFSCxrQ0FBcUM7WUFDbkRLLGFBQWEsRUFBRXhCLG1EQUFTO1FBQzFCLENBQUM7SUFFSCxDQUFDO0lBQ0R5QixNQUFNLEVBQUVOLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDTSxVQUFVO0lBQzlCQyxLQUFLLEVBQUUsQ0FBQztRQUNKQyxNQUFNLEVBQUUsQ0FBUTtJQUNwQixDQUFDO0lBQ0RDLFNBQVMsRUFBRSxDQUFDO2NBQ0ZDLEdBQUcsRUFBQyxDQUFDLENBQUM1QixLQUFLLEdBQUU2QixPQUFPLEdBQUVDLElBQUksSUFBRSxDQUFDLEVBQUUsQ0FBQztZQUNwQyxFQUFFLEVBQUVELE9BQU8sSUFBSUMsSUFBSSxFQUFHLENBQUM7Z0JBQ25CLE1BQU0sQ0FBQyxDQUFDO3VCQUNEOUIsS0FBSztvQkFDUkUsV0FBVyxFQUFFMkIsT0FBTyxDQUFDckIsWUFBWTtvQkFDakNMLFlBQVksRUFBRTBCLE9BQU8sQ0FBQ2hCLGFBQWE7b0JBQ25Da0IsUUFBUSxFQUFFRixPQUFPLENBQUNHLGlCQUFpQjtvQkFDbkN2QixrQkFBa0IsRUFBRW9CLE9BQU8sQ0FBQ0ksVUFBVSxHQUFHLElBQUk7Z0JBQ2pELENBQUM7WUFDTCxDQUFDO1lBQ0QsRUFBRSxFQUFFdkIsSUFBSSxDQUFDQyxHQUFHLEtBQUtYLEtBQUssQ0FBQ1Msa0JBQWtCLEVBQUUsQ0FBQztnQkFDeENILE9BQU8sQ0FBQ0MsR0FBRyxDQUFDLENBQWdDO2dCQUM1QyxNQUFNLENBQUNQLEtBQUs7WUFDaEIsQ0FBQztZQUNELEVBQXdEO1lBQ3hETSxPQUFPLENBQUVDLEdBQUcsQ0FBQyxDQUF5QztZQUN0RCxNQUFNLENBQUMsS0FBSyxDQUFDUixrQkFBa0IsQ0FBQ0MsS0FBSztRQUN2QyxDQUFDO2NBQ0trQyxPQUFPLEVBQUMsQ0FBQyxDQUFDQSxPQUFPLEdBQUVsQyxLQUFLLEVBQUMsQ0FBQyxFQUFFLENBQUM7WUFDakNrQyxPQUFPLENBQUNKLElBQUksQ0FBQzVCLFdBQVcsR0FBR0YsS0FBSyxDQUFDRSxXQUFXO1lBQzVDZ0MsT0FBTyxDQUFDSixJQUFJLENBQUMzQixZQUFZLEdBQUdILEtBQUssQ0FBQ0csWUFBWTtZQUM5QytCLE9BQU8sQ0FBQ0osSUFBSSxDQUFDQyxRQUFRLEdBQUcvQixLQUFLLENBQUMrQixRQUFRO1lBRXRDLE1BQU0sQ0FBQ0csT0FBTztRQUNsQixDQUFDO0lBQ0gsQ0FBQztBQUNILENBQUMsQ0FBQyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3BhZ2VzL2FwaS9hdXRoL1suLi5uZXh0YXV0aF0uanM/NTI3ZiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgTmV4dEF1dGggZnJvbSBcIm5leHQtYXV0aFwiXG5pbXBvcnQgU3BvdGlmeVByb3ZpZGVyIGZyb20gXCJuZXh0LWF1dGgvcHJvdmlkZXJzL3Nwb3RpZnlcIlxuaW1wb3J0IHNwb3RpZnlBUEksIHsgTE9HSU5fVVJMIH0gZnJvbSBcIi4uLy4uLy4uL2xpYi9zcG90aWZ5XCJcblxuYXN5bmMgZnVuY3Rpb24gcmVmcmVzaEFjY2Vzc1Rva2VuKHRva2VuKSB7XG4gICAgdHJ5IHtcbiAgICAgICAgc3BvdGlmeUFQSS5zZXRBY2Nlc3NUb2tlbih0b2tlbi5hY2Nlc3NUb2tlbik7XG4gICAgICAgIHNwb3RpZnlBUEkuc2V0QWNjZXNzVG9rZW4odG9rZW4ucmVmcmVzaFRva2VuKTtcblxuICAgICAgICBjb25zdCB7IGJvZHk6IHJlZnJlc2hlZFRva2VuIH0gPSBhd2FpdCBzcG90aWZ5QVBJLnJlZnJlc2hBY2Nlc3NUb2tlbigpXG4gICAgICAgIGNvbnNvbGUubG9nKFwiUkVGUkVTSEVEIFRPS0VOIElTXCIsIHJlZnJlc2hlZFRva2VuKTtcblxuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgLi4udG9rZW4sXG4gICAgICAgICAgICBhY2Nlc3NUb2tlbjogcmVmcmVzaGVkVG9rZW4uYWNjZXNzX3Rva2VuLFxuICAgICAgICAgICAgYWNjZXNzVG9rZW5FeHBpcmVzOiBEYXRlLm5vdyArIHJlZnJlc2hlZFRva2VuLmV4cGlyZXNfaW4gKiAxMDAwLFxuICAgICAgICAgICAgcmVmcmVzaFRva2VuOiByZWZyZXNoZWRUb2tlbi5yZWZyZXNoX3Rva2VuID8/IHRva2VuLnJlZnJlc2hUb2tlbixcbiAgICAgICAgfVxuXG4gICAgfSBjYXRjaChlcnJvcikge1xuICAgICAgICBjb25zb2xlLmxvZyhlcnJvcilcblxuICAgICAgICByZXR1cm4ge1xuICAgICAgICAgICAgLi4udG9rZW4sXG4gICAgICAgICAgICBlcnJvcjogJ1JlZnJlc2hBY2Nlc3NUb2tlbkVycm9yJ1xuICAgICAgICB9XG4gICAgfVxufVxuXG5leHBvcnQgZGVmYXVsdCBOZXh0QXV0aCh7XG4gIC8vIENvbmZpZ3VyZSBvbmUgb3IgbW9yZSBhdXRoZW50aWNhdGlvbiBwcm92aWRlcnNcbiAgcHJvdmlkZXJzOiBbXG4gICAgU3BvdGlmeVByb3ZpZGVyKHtcbiAgICAgIGNsaWVudElkOiBwcm9jZXNzLmVudi5ORVhUX1BVQkxJQ19DTElFTlRfSUQsXG4gICAgICBjbGllbnRTZWNyZXQ6IHByb2Nlc3MuZW52Lk5FWFRfUFVCTElDX0NMSUVOVF9TRUNSRVQsXG4gICAgICBhdXRob3JpemF0aW9uOiBMT0dJTl9VUkxcbiAgICB9KSxcbiAgICAvLyAuLi5hZGQgbW9yZSBwcm92aWRlcnMgaGVyZVxuICBdLFxuICBzZWNyZXQ6IHByb2Nlc3MuZW52LkpXVF9TRUNSRVQsXG4gIHBhZ2VzOiB7XG4gICAgICBzaWduSW46ICcvbG9naW4nXG4gIH0sXG4gIGNhbGxiYWNrczoge1xuICAgICAgYXN5bmMgand0KHsgdG9rZW4sIGFjY291bnQsIHVzZXIsIH0pIHtcbiAgICAgICAgaWYoIGFjY291bnQgJiYgdXNlciApIHtcbiAgICAgICAgICAgIHJldHVybiB7XG4gICAgICAgICAgICAgICAgLi4udG9rZW4sIFxuICAgICAgICAgICAgICAgIGFjY2Vzc1Rva2VuOiBhY2NvdW50LmFjY2Vzc190b2tlbixcbiAgICAgICAgICAgICAgICByZWZyZXNoVG9rZW46IGFjY291bnQucmVmcmVzaF90b2tlbixcbiAgICAgICAgICAgICAgICB1c2VybmFtZTogYWNjb3VudC5wcm92aWRlckFjY291bnRJZCxcbiAgICAgICAgICAgICAgICBhY2Nlc3NUb2tlbkV4cGlyZXM6IGFjY291bnQuZXhwaXJlc19hdCAqIDEwMDBcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgICAgICBpZiAoRGF0ZS5ub3coKSA8IHRva2VuLmFjY2Vzc1Rva2VuRXhwaXJlcykge1xuICAgICAgICAgICAgY29uc29sZS5sb2coXCJFWElTVElORyBBQ0NFU1MgVE9LRU4gSVMgVkFMSURcIik7XG4gICAgICAgICAgICByZXR1cm4gdG9rZW47XG4gICAgICAgIH1cbiAgICAgICAgLy8gQWNjZXNzIHRva2VuIGhhcyBleHBpcmVkLCBzbyB3ZSBuZWVkIHRvIHJlZnJlc2ggaXQuLi5cbiAgICAgICAgY29uc29sZS4gbG9nKFwiQUNDRVNTIFRPS0VOIEhBUyBFWFBJUkVELCBSRUZSRVNISU5HLi4uXCIpO1xuICAgICAgICByZXR1cm4gYXdhaXQgcmVmcmVzaEFjY2Vzc1Rva2VuKHRva2VuKVxuICAgICAgfSxcbiAgICAgIGFzeW5jIHNlc3Npb24oeyBzZXNzaW9uLCB0b2tlbiB9KSB7XG4gICAgICAgIHNlc3Npb24udXNlci5hY2Nlc3NUb2tlbiA9IHRva2VuLmFjY2Vzc1Rva2VuO1xuICAgICAgICBzZXNzaW9uLnVzZXIucmVmcmVzaFRva2VuID0gdG9rZW4ucmVmcmVzaFRva2VuO1xuICAgICAgICBzZXNzaW9uLnVzZXIudXNlcm5hbWUgPSB0b2tlbi51c2VybmFtZTtcblxuICAgICAgICByZXR1cm4gc2Vzc2lvbjtcbiAgICB9XG4gIH1cbn0pIl0sIm5hbWVzIjpbIk5leHRBdXRoIiwiU3BvdGlmeVByb3ZpZGVyIiwic3BvdGlmeUFQSSIsIkxPR0lOX1VSTCIsInJlZnJlc2hBY2Nlc3NUb2tlbiIsInRva2VuIiwic2V0QWNjZXNzVG9rZW4iLCJhY2Nlc3NUb2tlbiIsInJlZnJlc2hUb2tlbiIsImJvZHkiLCJyZWZyZXNoZWRUb2tlbiIsImNvbnNvbGUiLCJsb2ciLCJhY2Nlc3NfdG9rZW4iLCJhY2Nlc3NUb2tlbkV4cGlyZXMiLCJEYXRlIiwibm93IiwiZXhwaXJlc19pbiIsInJlZnJlc2hfdG9rZW4iLCJlcnJvciIsInByb3ZpZGVycyIsImNsaWVudElkIiwicHJvY2VzcyIsImVudiIsIk5FWFRfUFVCTElDX0NMSUVOVF9JRCIsImNsaWVudFNlY3JldCIsIk5FWFRfUFVCTElDX0NMSUVOVF9TRUNSRVQiLCJhdXRob3JpemF0aW9uIiwic2VjcmV0IiwiSldUX1NFQ1JFVCIsInBhZ2VzIiwic2lnbkluIiwiY2FsbGJhY2tzIiwiand0IiwiYWNjb3VudCIsInVzZXIiLCJ1c2VybmFtZSIsInByb3ZpZGVyQWNjb3VudElkIiwiZXhwaXJlc19hdCIsInNlc3Npb24iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./pages/api/auth/[...nextauth].js\n");
+const scopes = [
+    "user-read-email",
+    "playlist-read-private",
+    "playlist-read-collaborative",
+    "user-read-email",
+    "streaming",
+    "user-read-private",
+    "user-library-read",
+    "user-top-read",
+    // "user-library-modify",
+    "user-read-playback-state",
+    "user-modify-playback-state",
+    "user-read-currently-playing",
+    "user-read-recently-played", 
+].join(',');
+const params = {
+    scope: scopes
+};
+const queryParamString = new URLSearchParams(params);
+const LOGIN_URL = "https://accounts.spotify.com/authorize?" + queryParamString.toString();
+const spotifyApi = new (external_spotify_web_api_node_default())({
+    clientId: "d292540e570d4d22b57f58539336c62b",
+    clientSecret: "3658db533a1747b9a0cfc20cd6764243"
+});
+/* harmony default export */ const spotify = (spotifyApi);
+
+
+;// CONCATENATED MODULE: ./pages/api/auth/[...nextauth].js
+
+
+
+async function refreshAccessToken(token) {
+    try {
+        spotify.setAccessToken(token.accessToken);
+        spotify.setAccessToken(token.refreshToken);
+        const { body: refreshedToken  } = await spotify.refreshAccessToken();
+        console.log("REFRESHED TOKEN IS", refreshedToken);
+        var _refresh_token;
+        return {
+            ...token,
+            accessToken: refreshedToken.access_token,
+            accessTokenExpires: Date.now + refreshedToken.expires_in * 1000,
+            refreshToken: (_refresh_token = refreshedToken.refresh_token) !== null && _refresh_token !== void 0 ? _refresh_token : token.refreshToken
+        };
+    } catch (error) {
+        console.log(error);
+        return {
+            ...token,
+            error: 'RefreshAccessTokenError'
+        };
+    }
+}
+/* harmony default export */ const _nextauth_ = (external_next_auth_default()({
+    // Configure one or more authentication providers
+    providers: [
+        spotify_default()({
+            clientId: "d292540e570d4d22b57f58539336c62b",
+            clientSecret: "3658db533a1747b9a0cfc20cd6764243",
+            authorization: LOGIN_URL
+        })
+    ],
+    secret: process.env.JWT_SECRET,
+    pages: {
+        signIn: '/login'
+    },
+    callbacks: {
+        async jwt ({ token , account , user ,  }) {
+            if (account && user) {
+                return {
+                    ...token,
+                    accessToken: account.access_token,
+                    refreshToken: account.refresh_token,
+                    username: account.providerAccountId,
+                    accessTokenExpires: account.expires_at * 1000
+                };
+            }
+            if (Date.now() < token.accessTokenExpires) {
+                console.log("EXISTING ACCESS TOKEN IS VALID");
+                return token;
+            }
+            // Access token has expired, so we need to refresh it...
+            console.log("ACCESS TOKEN HAS EXPIRED, REFRESHING...");
+            return await refreshAccessToken(token);
+        },
+        async session ({ session , token  }) {
+            session.user.accessToken = token.accessToken;
+            session.user.refreshToken = token.refreshToken;
+            session.user.username = token.username;
+            return session;
+        }
+    }
+}));
+
 
 /***/ })
 
@@ -70,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 var __webpack_require__ = require("../../../webpack-api-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__("(api)/./pages/api/auth/[...nextauth].js"));
+var __webpack_exports__ = (__webpack_exec__(872));
 module.exports = __webpack_exports__;
 
 })();
