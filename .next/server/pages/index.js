@@ -1,616 +1,215 @@
 "use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 (() => {
 var exports = {};
-exports.id = 405;
-exports.ids = [405];
+exports.id = "pages/index";
+exports.ids = ["pages/index"];
 exports.modules = {
 
-/***/ 522:
+/***/ "./atoms/playlistAtom.js":
+/*!*******************************!*\
+  !*** ./atoms/playlistAtom.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ pages),
-  "getServerSideProps": () => (/* binding */ getServerSideProps)
-});
-
-// EXTERNAL MODULE: external "react/jsx-runtime"
-var jsx_runtime_ = __webpack_require__(997);
-// EXTERNAL MODULE: external "react"
-var external_react_ = __webpack_require__(689);
-;// CONCATENATED MODULE: external "@heroicons/react/outline"
-const outline_namespaceObject = require("@heroicons/react/outline");
-;// CONCATENATED MODULE: external "@heroicons/react/solid"
-const solid_namespaceObject = require("@heroicons/react/solid");
-// EXTERNAL MODULE: external "next-auth/react"
-var react_ = __webpack_require__(649);
-;// CONCATENATED MODULE: external "spotify-web-api-node"
-const external_spotify_web_api_node_namespaceObject = require("spotify-web-api-node");
-var external_spotify_web_api_node_default = /*#__PURE__*/__webpack_require__.n(external_spotify_web_api_node_namespaceObject);
-;// CONCATENATED MODULE: ./hooks/useSpotify.js
-
-
-
-const spotifyApi = new (external_spotify_web_api_node_default())({
-    clientId: "d292540e570d4d22b57f58539336c62b",
-    clientSecret: "3658db533a1747b9a0cfc20cd6764243"
-});
-const useSpotify = ()=>{
-    const { data: session , status  } = (0,react_.useSession)();
-    (0,external_react_.useEffect)(()=>{
-        if (session) {
-            if (session.error === 'RefreshAccessTokenError') {
-                (0,react_.signIn)();
-            }
-            spotifyApi.setAccessToken(session.user.accessToken);
-        }
-    }, [
-        session
-    ]);
-    return spotifyApi;
-};
-/* harmony default export */ const hooks_useSpotify = (useSpotify);
-
-// EXTERNAL MODULE: external "recoil"
-var external_recoil_ = __webpack_require__(755);
-;// CONCATENATED MODULE: ./atoms/playlistAtom.js
-
-const playlistIdState = (0,external_recoil_.atom)({
-    key: "playlistIdState",
-    default: "37i9dQZEVXcQ4US7rcT7rn"
-});
-const playlistState = (0,external_recoil_.atom)({
-    key: "playlistState",
-    default: null
-});
-
-;// CONCATENATED MODULE: ./components/Sidebar.jsx
-
-
-
-
-
-
-
-
-const Sidebar = ()=>{
-    const spotifyApi = hooks_useSpotify();
-    const { data: session , status  } = (0,react_.useSession)();
-    const { 0: playlists , 1: setPlaylists  } = (0,external_react_.useState)([]);
-    const [playlistId, setPlaylistId] = (0,external_recoil_.useRecoilState)(playlistIdState);
-    console.log('you picked playlist', playlistId);
-    (0,external_react_.useEffect)(()=>{
-        if (spotifyApi.getAccessToken()) {
-            spotifyApi.getUserPlaylists().then((data)=>{
-                setPlaylists(data.body.items);
-            });
-        }
-    }, [
-        session,
-        spotifyApi
-    ]);
-    return(/*#__PURE__*/ jsx_runtime_.jsx("div", {
-        className: "text-gray-500 p-5 text-xs lg:text-sm sm:max-w-[12rem] lg:max-w-[15rem] border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide hidden md:inline-flex pb-36",
-        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-            className: "space-y-4",
-            children: [
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                    className: "flex items-center space-x-2 hover:text-white",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.HomeIcon, {
-                            className: "h-5 w-5"
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "home"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                    className: "flex items-center space-x-2 hover:text-white",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.SearchIcon, {
-                            className: "h-5 w-5"
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "Search"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                    className: "flex items-center space-x-2 hover:text-white",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.LibraryIcon, {
-                            className: "h-5 w-5"
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "Library"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx("hr", {
-                    className: "border-top-[0.1x] border-gray-900"
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                    className: "flex items-center space-x-2 hover:text-white",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.PlusCircleIcon, {
-                            className: "h-5 w-5"
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "Create Playlist"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                    className: "flex items-center space-x-2 hover:text-white",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.HeartIcon, {
-                            className: "h-5 w-5 text-blue-500"
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "Liked Songs"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                    className: "flex items-center space-x-2 hover:text-white",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.RssIcon, {
-                            className: "h-5 w-5 text-green-500"
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                            children: "Your Episodes"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ jsx_runtime_.jsx("hr", {
-                    className: "border-top-[0.1x] border-gray-900"
-                }),
-                playlists.map((playlist)=>/*#__PURE__*/ jsx_runtime_.jsx("p", {
-                        className: "cursor-pointer hover:text-white",
-                        onClick: ()=>setPlaylistId(playlist.id)
-                        ,
-                        children: playlist.name
-                    }, playlist.id)
-                )
-            ]
-        })
-    }));
-};
-/* harmony default export */ const components_Sidebar = (Sidebar);
-
-;// CONCATENATED MODULE: external "lodash"
-const external_lodash_namespaceObject = require("lodash");
-;// CONCATENATED MODULE: ./lib/time.js
-function millisToMinutesAndSeconds(millis) {
-    const minutes = Math.floor(millis / 60000);
-    const seconds = (millis % 60000 / 1000).toFixed(0);
-    return seconds == 60 ? minutes + 1 + ":00" : minutes + ":" + (seconds < 10 ? "e" : "") + seconds;
-}
-
-;// CONCATENATED MODULE: ./atoms/songAtom.js
-
-const currentTrackIdState = (0,external_recoil_.atom)({
-    key: "currentTrackIdState",
-    default: null
-});
-const isPlayingState = (0,external_recoil_.atom)({
-    key: "isPlayingState",
-    default: false
-});
-
-;// CONCATENATED MODULE: ./components/Song.jsx
-
-
-
-
-
-
-const Song = ({ order , track  })=>{
-    const spotifyApi = hooks_useSpotify();
-    const [currentTrackId, setCurrentTrackId] = (0,external_recoil_.useRecoilState)(currentTrackIdState);
-    const [isPlaying, setIsPlaying] = (0,external_recoil_.useRecoilState)(isPlayingState);
-    const playSong = ()=>{
-        setCurrentTrackId(track.track.id);
-        setIsPlaying(true);
-        spotifyApi.play({
-            uris: [
-                track.track.uri
-            ]
-        });
-    };
-    return(/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "grid grid-cols-2 text-gray-500 py-4 px-5 hover:bg-gray-900 rounded-lg cursor-pointer",
-        onClick: playSong,
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex items-center space-x-4",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                        children: order + 1
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                        className: "h-10 w-10",
-                        src: track.track.album.images[0].url,
-                        alt: ""
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "w-36 lg:w-64 xl:w-80 truncate text-white",
-                                children: track.track.name
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                className: "w-40",
-                                children: track.track.artists[0].name
-                            })
-                        ]
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex items-center justify-between ml-auto md:ml-0",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                        className: "hidden md:inline w-40",
-                        children: track.track.album.name
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                        children: millisToMinutesAndSeconds(track.track.duration_ms)
-                    })
-                ]
-            })
-        ]
-    }));
-};
-/* harmony default export */ const components_Song = (Song);
-
-;// CONCATENATED MODULE: ./components/Songs.js
-
-
-
-
-
-const Songs = ()=>{
-    const playlist = (0,external_recoil_.useRecoilValue)(playlistState);
-    return(/*#__PURE__*/ jsx_runtime_.jsx("div", {
-        className: "px-8 flex flex-col space space-y-1 pb-28 text-white",
-        children: playlist === null || playlist === void 0 ? void 0 : playlist.tracks.items.map((track, i)=>/*#__PURE__*/ jsx_runtime_.jsx(components_Song, {
-                track: track,
-                order: i
-            }, track.track.id)
-        )
-    }));
-};
-/* harmony default export */ const components_Songs = (Songs);
-
-;// CONCATENATED MODULE: ./components/Center.jsx
-
-
-
-
-
-
-
-
-
-const colors = [
-    "from-indigo-500",
-    "from-blue-500",
-    "from-green-500",
-    "from-red-500",
-    "from-yellow-500",
-    "from-pink-500",
-    "from-purple-500", 
-];
-const Center = ()=>{
-    var ref, ref1, ref2;
-    const { data: session  } = (0,react_.useSession)();
-    const { 0: color , 1: setColor  } = (0,external_react_.useState)();
-    const spotifyApi = hooks_useSpotify();
-    const playlistId = (0,external_recoil_.useRecoilValue)(playlistIdState);
-    const [playlist, setPlaylist] = (0,external_recoil_.useRecoilState)(playlistState);
-    (0,external_react_.useEffect)(()=>{
-        setColor((0,external_lodash_namespaceObject.shuffle)(colors).pop());
-    }, [
-        playlistId
-    ]);
-    (0,external_react_.useEffect)(()=>{
-        spotifyApi.getPlaylist(playlistId).then((data)=>{
-            setPlaylist(data.body);
-        }).catch((err)=>console.log("Something went wrong!", err)
-        );
-    }, [
-        spotifyApi,
-        playlistId
-    ]);
-    return(/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "flex-grow h-screen overflow-y-scroll scrollbar-hide",
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("header", {
-                className: "absolute top-5 right-8 ",
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                    className: "flex items-center bg-black space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2 text-white",
-                    onClick: react_.signOut,
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                            className: "rounded-full w-10 h-10",
-                            src: session === null || session === void 0 ? void 0 : (ref = session.user) === null || ref === void 0 ? void 0 : ref.image,
-                            alt: ""
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("h2", {
-                            children: session === null || session === void 0 ? void 0 : session.user.name
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.ChevronDownIcon, {
-                            className: "h-5 w-5"
-                        })
-                    ]
-                })
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("section", {
-                className: `flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`,
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                        className: "h-44 w-44 shadow-2xl",
-                        src: playlist === null || playlist === void 0 ? void 0 : (ref1 = playlist.images) === null || ref1 === void 0 ? void 0 : (ref2 = ref1[0]) === null || ref2 === void 0 ? void 0 : ref2.url,
-                        alt: ""
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                children: "PLAYLIST"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("h1", {
-                                className: "text-2xl md:text-3xl xl:text-5xl font-bold",
-                                children: playlist === null || playlist === void 0 ? void 0 : playlist.name
-                            })
-                        ]
-                    })
-                ]
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                children: /*#__PURE__*/ jsx_runtime_.jsx(components_Songs, {})
-            })
-        ]
-    }));
-};
-/* harmony default export */ const components_Center = (Center);
-
-;// CONCATENATED MODULE: ./hooks/useSongInfo.jsx
-
-
-
-
-
-const useSongInfo = ()=>{
-    const spotifyApi = hooks_useSpotify();
-    const [currentIdTrack, setCurrentIdTrack] = (0,external_recoil_.useRecoilState)(currentTrackIdState);
-    const { 0: songInfo , 1: setSongInfo  } = (0,external_react_.useState)(null);
-    (0,external_react_.useEffect)(()=>{
-        const fetchSongInfo = async ()=>{
-            if (currentIdTrack) {
-                const trackInfo = await fetch(`https://api.spotify.com/v1/tracks/${currentIdTrack}`, {
-                    headers: {
-                        Authorization: `Bearer ${spotifyApi.getAccessToken()}`
-                    }
-                }).then((res)=>res.json()
-                );
-                setSongInfo(trackInfo);
-            }
-        };
-        fetchSongInfo();
-    }, [
-        currentIdTrack,
-        spotifyApi
-    ]);
-    return songInfo;
-};
-/* harmony default export */ const hooks_useSongInfo = (useSongInfo);
-
-;// CONCATENATED MODULE: ./components/Player.jsx
-
-
-
-
-
-
-
-
-
-
-const Player = ()=>{
-    var ref5, ref1, ref2, ref3;
-    const { data: session , status  } = (0,react_.useSession)();
-    const [currentTrackId, setCurrentIdTrack] = (0,external_recoil_.useRecoilState)(currentTrackIdState);
-    const [isPlaying, setIsPlaying] = (0,external_recoil_.useRecoilState)(isPlayingState);
-    const { 0: volume1 , 1: setVolume  } = (0,external_react_.useState)(50);
-    const songInfo = hooks_useSongInfo();
-    const spotifyApi = hooks_useSpotify();
-    const fetchCurrentSong = ()=>{
-        if (!songInfo) {
-            spotifyApi.getMyCurrentPlayingTrack().then((data1)=>{
-                var ref6, ref4;
-                setCurrentIdTrack((ref6 = data1.body) === null || ref6 === void 0 ? void 0 : (ref4 = ref6.item) === null || ref4 === void 0 ? void 0 : ref4.id);
-                spotifyApi.getMyCurrentPlaybackState().then((data)=>{
-                    var ref;
-                    setIsPlaying((ref = data.boy) === null || ref === void 0 ? void 0 : ref.is_playing);
-                });
-            });
-        }
-    };
-    const handlePlayPause = ()=>{
-        spotifyApi.getMyCurrentPlaybackState().then((data)=>{
-            if (data.body.is_playing) {
-                spotifyApi.pause();
-                setIsPlaying(false);
-            } else {
-                spotifyApi.play();
-                setIsPlaying(true);
-            }
-            ;
-        });
-    };
-    const debouncedAdjustVolume = (0,external_react_.useCallback)((0,external_lodash_namespaceObject.debounce)((volume)=>{
-        spotifyApi.setVolume(volume).catch((err)=>{});
-    }, 200), []);
-    (0,external_react_.useEffect)(()=>{
-        if (spotifyApi.getAccessToken() && !currentTrackId) {
-            fetchCurrentSong();
-            setVolume(50);
-        }
-    }, [
-        currentTrackId,
-        spotifyApi,
-        session
-    ]);
-    (0,external_react_.useEffect)(()=>{
-        if (volume1 > 0 && volume1 < 100) {
-            debouncedAdjustVolume(volume1);
-        }
-    }, [
-        volume1
-    ]);
-    return(/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "h-24 bg-gradient-to-b from-black to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8",
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex items-center space-x-4",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                        className: "hidden md:inline h-10 w-10",
-                        src: (ref5 = songInfo === null || songInfo === void 0 ? void 0 : songInfo.album.images) === null || ref5 === void 0 ? void 0 : (ref1 = ref5[0]) === null || ref1 === void 0 ? void 0 : ref1.url,
-                        alt: ""
-                    }),
-                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("h3", {
-                                children: songInfo === null || songInfo === void 0 ? void 0 : songInfo.name
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                children: songInfo === null || songInfo === void 0 ? void 0 : (ref2 = songInfo.artists) === null || ref2 === void 0 ? void 0 : (ref3 = ref2[0]) === null || ref3 === void 0 ? void 0 : ref3.name
-                            })
-                        ]
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex items-center justify-evenly",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.SwitchHorizontalIcon, {
-                        className: "button"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.RewindIcon, {
-                        // onclick={() => spotifyApi.skipToPrevious()} 
-                        className: "button"
-                    }),
-                    isPlaying ? /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.PauseIcon, {
-                        onClick: handlePlayPause,
-                        className: "button w-10 h-10"
-                    }) : /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.PlayIcon, {
-                        onClick: handlePlayPause,
-                        className: "button w-10 h-10"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.FastForwardIcon, {
-                        // onClick={ spotifyApi.skipToNext()} 
-                        className: "button"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.ReplyIcon, {
-                        className: "button"
-                    })
-                ]
-            }),
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "flex items-center space-x-3 md:space-x-4 justify-end pr-5",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx(outline_namespaceObject.VolumeUpIcon, {
-                        className: "button",
-                        onClick: ()=>volume1 > 0 && setVolume(volume1 - 10)
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("input", {
-                        className: "w-14 md:w-28",
-                        type: "range",
-                        value: volume1,
-                        onChange: (e)=>setVolume(Number(e.target.value))
-                        ,
-                        min: "0",
-                        max: "100"
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx(solid_namespaceObject.VolumeUpIcon, {
-                        className: "button",
-                        onClick: ()=>volume1 < 100 && setVolume(volume1 + 10)
-                    })
-                ]
-            })
-        ]
-    }));
-};
-/* harmony default export */ const components_Player = (Player);
-
-;// CONCATENATED MODULE: ./pages/index.tsx
-
-
-
-
-
-const Home = ()=>{
-    return(/*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-        className: "bg-black h-screen overflow-hidden",
-        children: [
-            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("main", {
-                className: "flex",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx(components_Sidebar, {}),
-                    /*#__PURE__*/ jsx_runtime_.jsx(components_Center, {})
-                ]
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "sticky bottom-0",
-                children: /*#__PURE__*/ jsx_runtime_.jsx(components_Player, {})
-            })
-        ]
-    }));
-};
-/* harmony default export */ const pages = (Home);
-async function getServerSideProps(context) {
-    const session = await (0,react_.getSession)(context);
-    return {
-        props: {
-            session
-        }
-    };
-}
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"playlistIdState\": () => (/* binding */ playlistIdState),\n/* harmony export */   \"playlistState\": () => (/* binding */ playlistState)\n/* harmony export */ });\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_0__);\n\nconst playlistIdState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({\n    key: \"playlistIdState\",\n    default: \"37i9dQZEVXcQ4US7rcT7rn\"\n});\nconst playlistState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({\n    key: \"playlistState\",\n    default: null\n});\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hdG9tcy9wbGF5bGlzdEF0b20uanMuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUE2QjtBQUV0QixLQUFLLENBQUNDLGVBQWUsR0FBR0QsNENBQUksQ0FBQyxDQUFDO0lBQ2pDRSxHQUFHLEVBQUUsQ0FBaUI7SUFDdEJDLE9BQU8sRUFBRSxDQUF3QjtBQUNyQyxDQUFDO0FBRU0sS0FBSyxDQUFDQyxhQUFhLEdBQUdKLDRDQUFJLENBQUMsQ0FBQztJQUMvQkUsR0FBRyxFQUFFLENBQWU7SUFDcEJDLE9BQU8sRUFBRSxJQUFJO0FBQ2pCLENBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hdG9tcy9wbGF5bGlzdEF0b20uanM/OGVlYSJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBhdG9tIH0gZnJvbSBcInJlY29pbFwiO1xuXG5leHBvcnQgY29uc3QgcGxheWxpc3RJZFN0YXRlID0gYXRvbSh7XG4gICAga2V5OiBcInBsYXlsaXN0SWRTdGF0ZVwiLFxuICAgIGRlZmF1bHQ6IFwiMzdpOWRRWkVWWGNRNFVTN3JjVDdyblwiXG59KVxuXG5leHBvcnQgY29uc3QgcGxheWxpc3RTdGF0ZSA9IGF0b20oe1xuICAgIGtleTogXCJwbGF5bGlzdFN0YXRlXCIsXG4gICAgZGVmYXVsdDogbnVsbFxufSk7Il0sIm5hbWVzIjpbImF0b20iLCJwbGF5bGlzdElkU3RhdGUiLCJrZXkiLCJkZWZhdWx0IiwicGxheWxpc3RTdGF0ZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./atoms/playlistAtom.js\n");
 
 /***/ }),
 
-/***/ 649:
+/***/ "./atoms/songAtom.js":
+/*!***************************!*\
+  !*** ./atoms/songAtom.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"currentTrackIdState\": () => (/* binding */ currentTrackIdState),\n/* harmony export */   \"isPlayingState\": () => (/* binding */ isPlayingState)\n/* harmony export */ });\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_0__);\n\nconst currentTrackIdState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({\n    key: \"currentTrackIdState\",\n    default: null\n});\nconst isPlayingState = (0,recoil__WEBPACK_IMPORTED_MODULE_0__.atom)({\n    key: \"isPlayingState\",\n    default: false\n});\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9hdG9tcy9zb25nQXRvbS5qcy5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQTZCO0FBRXRCLEtBQUssQ0FBQ0MsbUJBQW1CLEdBQUdELDRDQUFJLENBQUUsQ0FBQztJQUN0Q0UsR0FBRyxFQUFFLENBQXFCO0lBQzFCQyxPQUFPLEVBQUUsSUFBSTtBQUNmLENBQUM7QUFFTSxLQUFLLENBQUNDLGNBQWMsR0FBR0osNENBQUksQ0FBQyxDQUFDO0lBQ3BDRSxHQUFHLEVBQUUsQ0FBZ0I7SUFDbkJDLE9BQU8sRUFBRSxLQUFLO0FBQ2hCLENBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hdG9tcy9zb25nQXRvbS5qcz82ZTg4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGF0b20gfSBmcm9tICdyZWNvaWwnXG5cbmV4cG9ydCBjb25zdCBjdXJyZW50VHJhY2tJZFN0YXRlID0gYXRvbSAoe1xuICAgIGtleTogXCJjdXJyZW50VHJhY2tJZFN0YXRlXCIsIC8vIHVuaXF1ZSBJRCAod2l0aCByZXNwZWN0IHRvIG90aGVyIGF0b21zL3NlbGVjdG9ycylcbiAgICBkZWZhdWx0OiBudWxsLCAvLyBkZWZhdWx0IHZhbHVlIChha2EgaW5pdGlhbCB2YWx1ZSlcbiAgfSk7XG4gIFxuICBleHBvcnQgY29uc3QgaXNQbGF5aW5nU3RhdGUgPSBhdG9tKHtcbiAga2V5OiBcImlzUGxheWluZ1N0YXRlXCIsXG4gICAgZGVmYXVsdDogZmFsc2UgICAgICAgICAgICAgICAgICAgICAgXG4gIH0pOyJdLCJuYW1lcyI6WyJhdG9tIiwiY3VycmVudFRyYWNrSWRTdGF0ZSIsImtleSIsImRlZmF1bHQiLCJpc1BsYXlpbmdTdGF0ZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./atoms/songAtom.js\n");
+
+/***/ }),
+
+/***/ "./components/Center.jsx":
+/*!*******************************!*\
+  !*** ./components/Center.jsx ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @heroicons/react/outline */ \"@heroicons/react/outline\");\n/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next-auth/react */ \"next-auth/react\");\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_auth_react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ \"lodash\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../atoms/playlistAtom */ \"./atoms/playlistAtom.js\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _hooks_useSpotify__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useSpotify */ \"./hooks/useSpotify.js\");\n/* harmony import */ var _Songs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Songs */ \"./components/Songs.js\");\n/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/head */ \"next/head\");\n/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_9__);\n\n\n\n\n\n\n\n\n\n\nconst colors = [\n    \"from-indigo-500\",\n    \"from-blue-500\",\n    \"from-green-500\",\n    \"from-red-500\",\n    \"from-yellow-500\",\n    \"from-pink-500\",\n    \"from-purple-500\", \n];\nconst Center = ()=>{\n    var ref, ref1, ref2;\n    const { data: session  } = (0,next_auth_react__WEBPACK_IMPORTED_MODULE_2__.useSession)();\n    const { 0: color , 1: setColor  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)();\n    const spotifyApi = (0,_hooks_useSpotify__WEBPACK_IMPORTED_MODULE_7__[\"default\"])();\n    const playlistId = (0,recoil__WEBPACK_IMPORTED_MODULE_6__.useRecoilValue)(_atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_5__.playlistIdState);\n    const [playlist, setPlaylist] = (0,recoil__WEBPACK_IMPORTED_MODULE_6__.useRecoilState)(_atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_5__.playlistState);\n    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{\n        setColor((0,lodash__WEBPACK_IMPORTED_MODULE_4__.shuffle)(colors).pop());\n    }, [\n        playlistId\n    ]);\n    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{\n        spotifyApi.getPlaylist(playlistId).then((data)=>{\n            setPlaylist(data.body);\n        }).catch((err)=>console.log(\"Something went wrong!\", err)\n        );\n    }, [\n        spotifyApi,\n        playlistId\n    ]);\n    return(/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"flex-grow h-screen overflow-y-scroll scrollbar-hide\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)((next_head__WEBPACK_IMPORTED_MODULE_9___default()), {\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"script\", {\n                        src: \"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 45,\n                        columnNumber: 9\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"script\", {\n                        src: \"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 46,\n                        columnNumber: 2\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"script\", {\n                        src: \"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 47,\n                        columnNumber: 2\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"script\", {\n                        src: \"/js/main5.js\",\n                        type: \"text/javascript\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 48,\n                        columnNumber: 11\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                lineNumber: 44,\n                columnNumber: 9\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"header\", {\n                className: \"absolute top-5 right-8 \",\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                    className: \"flex items-center bg-black space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2 text-white\",\n                    onClick: next_auth_react__WEBPACK_IMPORTED_MODULE_2__.signOut,\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"img\", {\n                            className: \"rounded-full w-10 h-10\",\n                            src: session === null || session === void 0 ? void 0 : (ref = session.user) === null || ref === void 0 ? void 0 : ref.image,\n                            alt: \"\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                            lineNumber: 54,\n                            columnNumber: 17\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h2\", {\n                            children: session === null || session === void 0 ? void 0 : session.user.name\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                            lineNumber: 55,\n                            columnNumber: 17\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_1__.ChevronDownIcon, {\n                            className: \"h-5 w-5\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                            lineNumber: 56,\n                            columnNumber: 17\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                    lineNumber: 51,\n                    columnNumber: 13\n                }, undefined)\n            }, void 0, false, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                lineNumber: 50,\n                columnNumber: 9\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"section\", {\n                className: `flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`,\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"img\", {\n                        className: \"h-44 w-44 shadow-2xl\",\n                        src: playlist === null || playlist === void 0 ? void 0 : (ref1 = playlist.images) === null || ref1 === void 0 ? void 0 : (ref2 = ref1[0]) === null || ref2 === void 0 ? void 0 : ref2.url,\n                        alt: \"\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 64,\n                        columnNumber: 13\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                        children: [\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                                children: \"PLAYLIST\"\n                            }, void 0, false, {\n                                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                lineNumber: 66,\n                                columnNumber: 17\n                            }, undefined),\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h1\", {\n                                className: \"text-2xl md:text-3xl xl:text-5xl font-bold\",\n                                children: playlist === null || playlist === void 0 ? void 0 : playlist.name\n                            }, void 0, false, {\n                                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                lineNumber: 67,\n                                columnNumber: 17\n                            }, undefined)\n                        ]\n                    }, void 0, true, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 65,\n                        columnNumber: 13\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                        class: \"content main\",\n                        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                            class: \"canvas-wrapper\",\n                            children: [\n                                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                                    id: \"p5_loading\",\n                                    class: \"p5_loading\",\n                                    children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                                        class: \"p5_loading__inner\",\n                                        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"span\", {}, void 0, false, {\n                                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                            lineNumber: 73,\n                                            columnNumber: 7\n                                        }, undefined)\n                                    }, void 0, false, {\n                                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                        lineNumber: 72,\n                                        columnNumber: 6\n                                    }, undefined)\n                                }, void 0, false, {\n                                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                    lineNumber: 71,\n                                    columnNumber: 5\n                                }, undefined),\n                                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                                    id: \"uploading-animation\",\n                                    class: \"p5_loading\",\n                                    children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                                        class: \"p5_loading__inner\",\n                                        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"span\", {}, void 0, false, {\n                                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                            lineNumber: 78,\n                                            columnNumber: 7\n                                        }, undefined)\n                                    }, void 0, false, {\n                                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                        lineNumber: 77,\n                                        columnNumber: 6\n                                    }, undefined)\n                                }, void 0, false, {\n                                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                    lineNumber: 76,\n                                    columnNumber: 5\n                                }, undefined),\n                                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"canvas\", {\n                                    id: \"webglcanvas\"\n                                }, void 0, false, {\n                                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                                    lineNumber: 81,\n                                    columnNumber: 5\n                                }, undefined)\n                            ]\n                        }, void 0, true, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                            lineNumber: 70,\n                            columnNumber: 4\n                        }, undefined)\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                        lineNumber: 69,\n                        columnNumber: 13\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                lineNumber: 63,\n                columnNumber: 9\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_Songs__WEBPACK_IMPORTED_MODULE_8__[\"default\"], {}, void 0, false, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                    lineNumber: 86,\n                    columnNumber: 13\n                }, undefined)\n            }, void 0, false, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n                lineNumber: 85,\n                columnNumber: 9\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Center.jsx\",\n        lineNumber: 43,\n        columnNumber: 5\n    }, undefined));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Center);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,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OztBQUlsQixDQUFDO0FBRUQsaUVBQWVHLE1BQU0iLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9jb21wb25lbnRzL0NlbnRlci5qc3g/YzNmMCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDaGV2cm9uRG93bkljb24gfSBmcm9tICdAaGVyb2ljb25zL3JlYWN0L291dGxpbmUnO1xuaW1wb3J0IHsgc2lnbk91dCwgdXNlU2Vzc2lvbiB9IGZyb20gJ25leHQtYXV0aC9yZWFjdCdcbmltcG9ydCB7IFJlYWN0LCB1c2VFZmZlY3QsIHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnXG5pbXBvcnQgeyBzaHVmZmxlIH0gZnJvbSAnbG9kYXNoJ1xuaW1wb3J0IHsgcGxheWxpc3RJZFN0YXRlLCBwbGF5bGlzdFN0YXRlIH0gZnJvbSAnLi4vYXRvbXMvcGxheWxpc3RBdG9tJztcbmltcG9ydCB7IHVzZVJlY29pbFN0YXRlLCB1c2VSZWNvaWxWYWx1ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQgdXNlU3BvdGlmeSBmcm9tICcuLi9ob29rcy91c2VTcG90aWZ5JztcbmltcG9ydCBTb25ncyBmcm9tICcuL1NvbmdzJ1xuaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcblxuY29uc3QgY29sb3JzID0gW1xuICAgIFwiZnJvbS1pbmRpZ28tNTAwXCIsXG4gICAgXCJmcm9tLWJsdWUtNTAwXCIsXG4gICAgXCJmcm9tLWdyZWVuLTUwMFwiLFxuICAgIFwiZnJvbS1yZWQtNTAwXCIsXG4gICAgXCJmcm9tLXllbGxvdy01MDBcIixcbiAgICBcImZyb20tcGluay01MDBcIixcbiAgICBcImZyb20tcHVycGxlLTUwMFwiLFxuXTtcblxuY29uc3QgQ2VudGVyID0gKCkgPT4ge1xuICAgIGNvbnN0IHsgZGF0YTogc2Vzc2lvbiB9ID0gdXNlU2Vzc2lvbigpO1xuICAgIGNvbnN0IFtjb2xvciwgc2V0Q29sb3JdID0gdXNlU3RhdGUoKTtcbiAgICBjb25zdCBzcG90aWZ5QXBpID0gdXNlU3BvdGlmeSgpO1xuICAgIGNvbnN0IHBsYXlsaXN0SWQgPSB1c2VSZWNvaWxWYWx1ZShwbGF5bGlzdElkU3RhdGUpO1xuICAgIGNvbnN0IFtwbGF5bGlzdCwgc2V0UGxheWxpc3RdID0gdXNlUmVjb2lsU3RhdGUocGxheWxpc3RTdGF0ZSlcblxuXG4gICAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICAgICAgc2V0Q29sb3Ioc2h1ZmZsZShjb2xvcnMpLnBvcCgpKVxuICAgIH0sIFtwbGF5bGlzdElkXSk7XG5cbiAgICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgICAgICBzcG90aWZ5QXBpXG4gICAgICAgICAgICAuZ2V0UGxheWxpc3QocGxheWxpc3RJZClcbiAgICAgICAgICAgIC50aGVuKChkYXRhKSA9PiB7XG4gICAgICAgICAgICAgICAgc2V0UGxheWxpc3QoZGF0YS5ib2R5KTtcbiAgICAgICAgfSkuY2F0Y2goKGVycikgPT4gY29uc29sZS5sb2coXCJTb21ldGhpbmcgd2VudCB3cm9uZyFcIiwgZXJyKSlcbiAgICB9LCBbc3BvdGlmeUFwaSwgcGxheWxpc3RJZF0pXG5cblxuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPSdmbGV4LWdyb3cgaC1zY3JlZW4gb3ZlcmZsb3cteS1zY3JvbGwgc2Nyb2xsYmFyLWhpZGUnPlxuICAgICAgICA8SGVhZD5cbiAgICAgICAgPHNjcmlwdCBzcmM9XCJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9wNS5qcy8wLjUuMTEvcDUubWluLmpzXCI+PC9zY3JpcHQ+XG5cdDxzY3JpcHQgc3JjPVwiaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvcDUuanMvMC41LjExL2FkZG9ucy9wNS5kb20ubWluLmpzXCI+PC9zY3JpcHQ+XG5cdDxzY3JpcHQgc3JjPVwiaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvcDUuanMvMC41LjExL2FkZG9ucy9wNS5zb3VuZC5taW4uanNcIj48L3NjcmlwdD5cbiAgICAgICAgICA8c2NyaXB0IHNyYz0nL2pzL21haW41LmpzJyB0eXBlPVwidGV4dC9qYXZhc2NyaXB0XCI+PC9zY3JpcHQ+XG4gICAgICAgIDwvSGVhZD5cbiAgICAgICAgPGhlYWRlciBjbGFzc05hbWU9J2Fic29sdXRlIHRvcC01IHJpZ2h0LTggJz5cbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSdmbGV4IGl0ZW1zLWNlbnRlciBiZy1ibGFjayBzcGFjZS14LTMgb3BhY2l0eS05MCBcbiAgICAgICAgICAgIGhvdmVyOm9wYWNpdHktODAgY3Vyc29yLXBvaW50ZXIgcm91bmRlZC1mdWxsIHAtMSBwci0yIHRleHQtd2hpdGUnXG4gICAgICAgICAgICBvbkNsaWNrPXtzaWduT3V0fT5cbiAgICAgICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT0ncm91bmRlZC1mdWxsIHctMTAgaC0xMCcgc3JjPXtzZXNzaW9uPy51c2VyPy5pbWFnZX0gYWx0PVwiXCIgLz5cbiAgICAgICAgICAgICAgICA8aDI+e3Nlc3Npb24/LnVzZXIubmFtZX08L2gyPlxuICAgICAgICAgICAgICAgIDxDaGV2cm9uRG93bkljb24gY2xhc3NOYW1lPSdoLTUgdy01JyAvPlxuICAgICAgICAgICAgICAgIHsvKiA8dWwgY2xhc3NOYW1lPSd3LTI4IGFic29sdXRlIHRvcC0xMiBsZWZ0LTggYmctYmxhY2sgc3BhY2UteC0zIG9wYWNpdHktOTAgXG4gICAgICAgICAgICAgICAgaG92ZXI6b3BhY2l0eS04MCBjdXJzb3ItcG9pbnRlciBwLTEgcHItMiB0ZXh0LXdoaXRlIGZsZXggY2VudGVyJz5cbiAgICAgICAgICAgICAgICAgICAgPGxpIGNsYXNzTmFtZT0nZmxleC1ncm93IGNlbnRlciB0ZXh0LWNlbnRlcic+U2lnbiBPdXQ8L2xpPlxuICAgICAgICAgICAgICAgIDwvdWw+ICovfVxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgIDwvaGVhZGVyPlxuICAgICAgICA8c2VjdGlvbiBjbGFzc05hbWU9e2BmbGV4IGl0ZW1zLWVuZCBzcGFjZS14LTcgYmctZ3JhZGllbnQtdG8tYiB0by1ibGFjayAke2NvbG9yfSBoLTgwIHRleHQtd2hpdGUgcC04YH0+XG4gICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT0naC00NCB3LTQ0IHNoYWRvdy0yeGwnIHNyYz17cGxheWxpc3Q/LmltYWdlcz8uWzBdPy51cmx9IGFsdD1cIlwiIC8+XG4gICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgIDxwPlBMQVlMSVNUPC9wPlxuICAgICAgICAgICAgICAgIDxoMSBjbGFzc05hbWU9J3RleHQtMnhsIG1kOnRleHQtM3hsIHhsOnRleHQtNXhsIGZvbnQtYm9sZCc+e3BsYXlsaXN0Py5uYW1lfTwvaDE+XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjb250ZW50IG1haW5cIj5cblx0XHRcdDxkaXYgY2xhc3M9XCJjYW52YXMtd3JhcHBlclwiPlxuXHRcdFx0XHQ8ZGl2IGlkPVwicDVfbG9hZGluZ1wiIGNsYXNzPVwicDVfbG9hZGluZ1wiPlxuXHRcdFx0XHRcdDxkaXYgY2xhc3M9XCJwNV9sb2FkaW5nX19pbm5lclwiPlxuXHRcdFx0XHRcdFx0PHNwYW4+PC9zcGFuPlxuXHRcdFx0XHRcdDwvZGl2PlxuXHRcdFx0XHQ8L2Rpdj5cblx0XHRcdFx0PGRpdiBpZD1cInVwbG9hZGluZy1hbmltYXRpb25cIiBjbGFzcz1cInA1X2xvYWRpbmdcIj5cblx0XHRcdFx0XHQ8ZGl2IGNsYXNzPVwicDVfbG9hZGluZ19faW5uZXJcIj5cblx0XHRcdFx0XHRcdDxzcGFuPjwvc3Bhbj5cblx0XHRcdFx0XHQ8L2Rpdj5cblx0XHRcdFx0PC9kaXY+XG5cdFx0XHRcdDxjYW52YXMgaWQ9XCJ3ZWJnbGNhbnZhc1wiPjwvY2FudmFzPlxuXHRcdFx0PC9kaXY+XG5cdFx0PC9kaXY+XG4gICAgICAgIDwvc2VjdGlvbj5cbiAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxTb25ncyAvPlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgKVxufVxuXG5leHBvcnQgZGVmYXVsdCBDZW50ZXIiXSwibmFtZXMiOlsiQ2hldnJvbkRvd25JY29uIiwic2lnbk91dCIsInVzZVNlc3Npb24iLCJSZWFjdCIsInVzZUVmZmVjdCIsInVzZVN0YXRlIiwic2h1ZmZsZSIsInBsYXlsaXN0SWRTdGF0ZSIsInBsYXlsaXN0U3RhdGUiLCJ1c2VSZWNvaWxTdGF0ZSIsInVzZVJlY29pbFZhbHVlIiwidXNlU3BvdGlmeSIsIlNvbmdzIiwiSGVhZCIsImNvbG9ycyIsIkNlbnRlciIsInNlc3Npb24iLCJwbGF5bGlzdCIsImRhdGEiLCJjb2xvciIsInNldENvbG9yIiwic3BvdGlmeUFwaSIsInBsYXlsaXN0SWQiLCJzZXRQbGF5bGlzdCIsInBvcCIsImdldFBsYXlsaXN0IiwidGhlbiIsImJvZHkiLCJjYXRjaCIsImVyciIsImNvbnNvbGUiLCJsb2ciLCJkaXYiLCJjbGFzc05hbWUiLCJzY3JpcHQiLCJzcmMiLCJ0eXBlIiwiaGVhZGVyIiwib25DbGljayIsImltZyIsInVzZXIiLCJpbWFnZSIsImFsdCIsImgyIiwibmFtZSIsInNlY3Rpb24iLCJpbWFnZXMiLCJ1cmwiLCJwIiwiaDEiLCJjbGFzcyIsImlkIiwic3BhbiIsImNhbnZhcyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./components/Center.jsx\n");
+
+/***/ }),
+
+/***/ "./components/Player.jsx":
+/*!*******************************!*\
+  !*** ./components/Player.jsx ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next-auth/react */ \"next-auth/react\");\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_auth_react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _atoms_songAtom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../atoms/songAtom */ \"./atoms/songAtom.js\");\n/* harmony import */ var _hooks_useSpotify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useSpotify */ \"./hooks/useSpotify.js\");\n/* harmony import */ var _hooks_useSongInfo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useSongInfo */ \"./hooks/useSongInfo.jsx\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ \"lodash\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);\n/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @heroicons/react/outline */ \"@heroicons/react/outline\");\n/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_8__);\n/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @heroicons/react/solid */ \"@heroicons/react/solid\");\n/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__);\n\n\n\n\n\n\n\n\n\n\nconst Player = ()=>{\n    var ref5, ref1, ref2, ref3;\n    const { data: session , status  } = (0,next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession)();\n    const [currentTrackId, setCurrentIdTrack] = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_atoms_songAtom__WEBPACK_IMPORTED_MODULE_4__.currentTrackIdState);\n    const [isPlaying, setIsPlaying] = (0,recoil__WEBPACK_IMPORTED_MODULE_3__.useRecoilState)(_atoms_songAtom__WEBPACK_IMPORTED_MODULE_4__.isPlayingState);\n    const { 0: volume1 , 1: setVolume  } = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(50);\n    const songInfo = (0,_hooks_useSongInfo__WEBPACK_IMPORTED_MODULE_6__[\"default\"])();\n    const spotifyApi = (0,_hooks_useSpotify__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\n    const fetchCurrentSong = ()=>{\n        if (!songInfo) {\n            spotifyApi.getMyCurrentPlayingTrack().then((data1)=>{\n                var ref6, ref4;\n                setCurrentIdTrack((ref6 = data1.body) === null || ref6 === void 0 ? void 0 : (ref4 = ref6.item) === null || ref4 === void 0 ? void 0 : ref4.id);\n                spotifyApi.getMyCurrentPlaybackState().then((data)=>{\n                    var ref;\n                    setIsPlaying((ref = data.boy) === null || ref === void 0 ? void 0 : ref.is_playing);\n                });\n            });\n        }\n    };\n    const handlePlayPause = ()=>{\n        spotifyApi.getMyCurrentPlaybackState().then((data)=>{\n            if (data.body.is_playing) {\n                spotifyApi.pause();\n                setIsPlaying(false);\n            } else {\n                spotifyApi.play();\n                setIsPlaying(true);\n            }\n            ;\n        });\n    };\n    const debouncedAdjustVolume = (0,react__WEBPACK_IMPORTED_MODULE_2__.useCallback)((0,lodash__WEBPACK_IMPORTED_MODULE_7__.debounce)((volume)=>{\n        spotifyApi.setVolume(volume).catch((err)=>{});\n    }, 200), []);\n    (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{\n        if (spotifyApi.getAccessToken() && !currentTrackId) {\n            fetchCurrentSong();\n            setVolume(50);\n        }\n    }, [\n        currentTrackId,\n        spotifyApi,\n        session\n    ]);\n    (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(()=>{\n        if (volume1 > 0 && volume1 < 100) {\n            debouncedAdjustVolume(volume1);\n        }\n    }, [\n        volume1\n    ]);\n    return(/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"h-24 bg-gradient-to-b from-black to-gray-900 text-white grid grid-cols-3 text-xs md:text-base px-2 md:px-8\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"flex items-center space-x-4\",\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"img\", {\n                        className: \"hidden md:inline h-10 w-10\",\n                        src: (ref5 = songInfo === null || songInfo === void 0 ? void 0 : songInfo.album.images) === null || ref5 === void 0 ? void 0 : (ref1 = ref5[0]) === null || ref1 === void 0 ? void 0 : ref1.url,\n                        alt: \"\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 77,\n                        columnNumber: 17\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                        children: [\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h3\", {\n                                children: songInfo === null || songInfo === void 0 ? void 0 : songInfo.name\n                            }, void 0, false, {\n                                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                                lineNumber: 79,\n                                columnNumber: 21\n                            }, undefined),\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                                children: songInfo === null || songInfo === void 0 ? void 0 : (ref2 = songInfo.artists) === null || ref2 === void 0 ? void 0 : (ref3 = ref2[0]) === null || ref3 === void 0 ? void 0 : ref3.name\n                            }, void 0, false, {\n                                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                                lineNumber: 80,\n                                columnNumber: 21\n                            }, undefined)\n                        ]\n                    }, void 0, true, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 78,\n                        columnNumber: 17\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                lineNumber: 76,\n                columnNumber: 13\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"flex items-center justify-evenly\",\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.SwitchHorizontalIcon, {\n                        className: \"button\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 85,\n                        columnNumber: 17\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.RewindIcon, {\n                        // onclick={() => spotifyApi.skipToPrevious()} \n                        className: \"button\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 86,\n                        columnNumber: 17\n                    }, undefined),\n                    isPlaying ? /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.PauseIcon, {\n                        onClick: handlePlayPause,\n                        className: \"button w-10 h-10\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 90,\n                        columnNumber: 21\n                    }, undefined) : /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.PlayIcon, {\n                        onClick: handlePlayPause,\n                        className: \"button w-10 h-10\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 92,\n                        columnNumber: 21\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.FastForwardIcon, {\n                        // onClick={ spotifyApi.skipToNext()} \n                        className: \"button\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 94,\n                        columnNumber: 17\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.ReplyIcon, {\n                        className: \"button\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 97,\n                        columnNumber: 17\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                lineNumber: 84,\n                columnNumber: 13\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"flex items-center space-x-3 md:space-x-4 justify-end pr-5\",\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_8__.VolumeUpIcon, {\n                        className: \"button\",\n                        onClick: ()=>volume1 > 0 && setVolume(volume1 - 10)\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 101,\n                        columnNumber: 17\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"input\", {\n                        className: \"w-14 md:w-28\",\n                        type: \"range\",\n                        value: volume1,\n                        onChange: (e)=>setVolume(Number(e.target.value))\n                        ,\n                        min: \"0\",\n                        max: \"100\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 102,\n                        columnNumber: 17\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_9__.VolumeUpIcon, {\n                        className: \"button\",\n                        onClick: ()=>volume1 < 100 && setVolume(volume1 + 10)\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                        lineNumber: 110,\n                        columnNumber: 17\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n                lineNumber: 100,\n                columnNumber: 13\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Player.jsx\",\n        lineNumber: 75,\n        columnNumber: 9\n    }, undefined));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Player);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,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Y29tcG9uZW50cy9QbGF5ZXIuanN4PzNjYWQiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgdXNlU2Vzc2lvbiB9IGZyb20gJ25leHQtYXV0aC9yZWFjdCc7XG5pbXBvcnQgUmVhY3QsIHsgdXNlQ2FsbGJhY2ssIHVzZUVmZmVjdCwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCdcbmltcG9ydCB7IHVzZVJlY29pbFN0YXRlIH0gZnJvbSAncmVjb2lsJztcbmltcG9ydCB7IGN1cnJlbnRUcmFja0lkU3RhdGUsIGlzUGxheWluZ1N0YXRlIH0gZnJvbSAnLi4vYXRvbXMvc29uZ0F0b20nO1xuaW1wb3J0IHVzZVNwb3RpZnkgZnJvbSAnLi4vaG9va3MvdXNlU3BvdGlmeSdcbmltcG9ydCB1c2VTb25nSW5mbyBmcm9tICcuLi9ob29rcy91c2VTb25nSW5mbydcbmltcG9ydCB7IGRlYm91bmNlIH0gZnJvbSAnbG9kYXNoJ1xuaW1wb3J0IHtcbiAgICBIZWFydEljb24sXG4gICAgVm9sdW1lVXBJY29uIGFzIFZvbHVtZURvd25JY29uLFxuICAgIH0gZnJvbSBcIkBoZXJvaWNvbnMvcmVhY3Qvb3V0bGluZVwiO1xuaW1wb3J0IHtcbiAgICBGYXN0Rm9yd2FyZEljb24sXG4gICAgUGF1c2VJY29uLFxuICAgIFBsYXlJY29uLFxuICAgIFJlcGx5SWNvbixcbiAgICBSZXdpbmRJY29uLFxuICAgIFZvbHVtZVVwSWNvbixcbiAgICBTd2l0Y2hIb3Jpem9udGFsSWNvbixcbiAgIH0gZnJvbSBcIkBoZXJvaWNvbnMvcmVhY3Qvc29saWRcIjtcblxuY29uc3QgUGxheWVyID0gKCkgPT4ge1xuICAgIGNvbnN0IHsgZGF0YTogc2Vzc2lvbiwgc3RhdHVzIH0gPSB1c2VTZXNzaW9uKCk7XG4gICAgY29uc3QgWyBjdXJyZW50VHJhY2tJZCwgc2V0Q3VycmVudElkVHJhY2tdID0gdXNlUmVjb2lsU3RhdGUoY3VycmVudFRyYWNrSWRTdGF0ZSk7XG4gICAgY29uc3QgW2lzUGxheWluZywgc2V0SXNQbGF5aW5nXSA9IHVzZVJlY29pbFN0YXRlKGlzUGxheWluZ1N0YXRlKVxuICAgIGNvbnN0IFsgdm9sdW1lLCBzZXRWb2x1bWUgXSA9IHVzZVN0YXRlKDUwKTtcblxuICAgIGNvbnN0IHNvbmdJbmZvID0gdXNlU29uZ0luZm8oKTtcbiAgICBjb25zdCBzcG90aWZ5QXBpID0gdXNlU3BvdGlmeSgpO1xuXG4gICAgY29uc3QgZmV0Y2hDdXJyZW50U29uZyA9ICgpID0+IHtcbiAgICAgICAgaWYgKCFzb25nSW5mbykge1xuICAgICAgICAgICAgc3BvdGlmeUFwaS5nZXRNeUN1cnJlbnRQbGF5aW5nVHJhY2soKS50aGVuKGRhdGEgPT4ge1xuICAgICAgICAgICAgICAgIHNldEN1cnJlbnRJZFRyYWNrKGRhdGEuYm9keT8uaXRlbT8uaWQpO1xuXG4gICAgICAgICAgICAgICAgc3BvdGlmeUFwaS5nZXRNeUN1cnJlbnRQbGF5YmFja1N0YXRlKCkudGhlbihkYXRhID0+IHtcbiAgICAgICAgICAgICAgICAgICAgc2V0SXNQbGF5aW5nKGRhdGEuYm95Py5pc19wbGF5aW5nKTtcbiAgICAgICAgICAgICAgICB9KTtcbiAgICAgICAgICAgIH0pO1xuICAgICAgICB9XG4gICAgfTtcblxuICAgIGNvbnN0IGhhbmRsZVBsYXlQYXVzZSA9ICgpID0+IHtcbiAgICAgICAgc3BvdGlmeUFwaS5nZXRNeUN1cnJlbnRQbGF5YmFja1N0YXRlKCkudGhlbigoZGF0YSkgPT4ge1xuICAgICAgICAgICAgaWYgKGRhdGEuYm9keS5pc19wbGF5aW5nKSB7XG4gICAgICAgICAgICAgICAgc3BvdGlmeUFwaS5wYXVzZSgpXG4gICAgICAgICAgICAgICAgc2V0SXNQbGF5aW5nKGZhbHNlKTtcbiAgICAgICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICAgICAgc3BvdGlmeUFwaS5wbGF5KClcbiAgICAgICAgICAgICAgICBzZXRJc1BsYXlpbmcodHJ1ZSk7XG4gICAgICAgICAgICB9O1xuICAgICAgICB9KTtcbiAgICB9O1xuXG4gICAgY29uc3QgZGVib3VuY2VkQWRqdXN0Vm9sdW1lID0gdXNlQ2FsbGJhY2soXG4gICAgICAgIGRlYm91bmNlKCh2b2x1bWUpID0+IHtcbiAgICAgICAgICAgIHNwb3RpZnlBcGkuc2V0Vm9sdW1lKHZvbHVtZSkuY2F0Y2goKGVycikgPT4ge30pO1xuICAgICAgICB9LCAyMDApLCBbXVxuICAgIClcblxuICAgIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgICAgIGlmIChzcG90aWZ5QXBpLmdldEFjY2Vzc1Rva2VuKCkgJiYgIWN1cnJlbnRUcmFja0lkKSB7XG4gICAgICAgICAgICBmZXRjaEN1cnJlbnRTb25nKCk7XG4gICAgICAgICAgICBzZXRWb2x1bWUoNTApO1xuICAgICAgICB9XG4gICAgfSwgW2N1cnJlbnRUcmFja0lkLCBzcG90aWZ5QXBpLCBzZXNzaW9uXSk7XG5cbiAgICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgICAgICBpZiAodm9sdW1lID4gMCAmJiB2b2x1bWUgPCAxMDApIHtcbiAgICAgICAgICAgIGRlYm91bmNlZEFkanVzdFZvbHVtZSh2b2x1bWUpO1xuICAgICAgICB9XG4gICAgfSwgW3ZvbHVtZV0pXG5cbiAgICByZXR1cm4gKFxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0naC0yNCBiZy1ncmFkaWVudC10by1iIGZyb20tYmxhY2sgdG8tZ3JheS05MDAgdGV4dC13aGl0ZSBncmlkIGdyaWQtY29scy0zIHRleHQteHMgbWQ6dGV4dC1iYXNlIHB4LTIgbWQ6cHgtOCc+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0nZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC00Jz5cbiAgICAgICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT0naGlkZGVuIG1kOmlubGluZSBoLTEwIHctMTAnIHNyYz17c29uZ0luZm8/LmFsYnVtLmltYWdlcz8uWzBdPy51cmx9IGFsdD1cIlwiIC8+XG4gICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgICAgPGgzPntzb25nSW5mbz8ubmFtZX08L2gzPlxuICAgICAgICAgICAgICAgICAgICA8cD57c29uZ0luZm8/LmFydGlzdHM/LlswXT8ubmFtZX08L3A+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9J2ZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktZXZlbmx5Jz5cbiAgICAgICAgICAgICAgICA8U3dpdGNoSG9yaXpvbnRhbEljb24gY2xhc3NOYW1lPSdidXR0b24nIC8+XG4gICAgICAgICAgICAgICAgPFJld2luZEljb24gXG4gICAgICAgICAgICAgICAgICAgIC8vIG9uY2xpY2s9eygpID0+IHNwb3RpZnlBcGkuc2tpcFRvUHJldmlvdXMoKX0gXG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0nYnV0dG9uJyAvPlxuICAgICAgICAgICAgICAgIHtpc1BsYXlpbmcgPyAoXG4gICAgICAgICAgICAgICAgICAgIDxQYXVzZUljb24gb25DbGljaz17aGFuZGxlUGxheVBhdXNlfSBjbGFzc05hbWU9J2J1dHRvbiB3LTEwIGgtMTAnLz5cbiAgICAgICAgICAgICAgICApIDogKFxuICAgICAgICAgICAgICAgICAgICA8UGxheUljb24gb25DbGljaz17aGFuZGxlUGxheVBhdXNlfSBjbGFzc05hbWU9J2J1dHRvbiB3LTEwIGgtMTAnIC8+XG4gICAgICAgICAgICAgICAgKX1cbiAgICAgICAgICAgICAgICA8RmFzdEZvcndhcmRJY29uIFxuICAgICAgICAgICAgICAgICAgICAvLyBvbkNsaWNrPXsgc3BvdGlmeUFwaS5za2lwVG9OZXh0KCl9IFxuICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9XCJidXR0b25cIiAvPlxuICAgICAgICAgICAgICAgIDxSZXBseUljb24gY2xhc3NOYW1lPVwiYnV0dG9uXCIgLz5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0nZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0zIG1kOnNwYWNlLXgtNCBqdXN0aWZ5LWVuZCBwci01Jz5cbiAgICAgICAgICAgICAgICA8Vm9sdW1lRG93bkljb24gY2xhc3NOYW1lPSdidXR0b24nIG9uQ2xpY2s9eygpID0+IHZvbHVtZSA+IDAgJiYgc2V0Vm9sdW1lKHZvbHVtZSAtIDEwKX0gLz5cbiAgICAgICAgICAgICAgICA8aW5wdXQgXG4gICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0ndy0xNCBtZDp3LTI4JyBcbiAgICAgICAgICAgICAgICAgICAgdHlwZT1cInJhbmdlXCIgXG4gICAgICAgICAgICAgICAgICAgIHZhbHVlPXt2b2x1bWV9IFxuICAgICAgICAgICAgICAgICAgICBvbkNoYW5nZT17KGUpID0+IHNldFZvbHVtZShOdW1iZXIoZS50YXJnZXQudmFsdWUpKX0gXG4gICAgICAgICAgICAgICAgICAgIG1pbj1cIjBcIiBcbiAgICAgICAgICAgICAgICAgICAgbWF4PVwiMTAwXCIgXG4gICAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgICA8Vm9sdW1lVXBJY29uIGNsYXNzTmFtZT0nYnV0dG9uJyBvbkNsaWNrPXsoKSA9PiB2b2x1bWUgPCAxMDAgJiYgc2V0Vm9sdW1lKHZvbHVtZSArIDEwKX0gLz5cbiAgICAgICAgICAgIDwvZGl2PlxuXG4gICAgICAgIDwvZGl2PlxuICAgICk7XG59XG5cbmV4cG9ydCBkZWZhdWx0IFBsYXllciJdLCJuYW1lcyI6WyJ1c2VTZXNzaW9uIiwiUmVhY3QiLCJ1c2VDYWxsYmFjayIsInVzZUVmZmVjdCIsInVzZVN0YXRlIiwidXNlUmVjb2lsU3RhdGUiLCJjdXJyZW50VHJhY2tJZFN0YXRlIiwiaXNQbGF5aW5nU3RhdGUiLCJ1c2VTcG90aWZ5IiwidXNlU29uZ0luZm8iLCJkZWJvdW5jZSIsIkhlYXJ0SWNvbiIsIlZvbHVtZVVwSWNvbiIsIlZvbHVtZURvd25JY29uIiwiRmFzdEZvcndhcmRJY29uIiwiUGF1c2VJY29uIiwiUGxheUljb24iLCJSZXBseUljb24iLCJSZXdpbmRJY29uIiwiU3dpdGNoSG9yaXpvbnRhbEljb24iLCJQbGF5ZXIiLCJzb25nSW5mbyIsImRhdGEiLCJzZXNzaW9uIiwic3RhdHVzIiwiY3VycmVudFRyYWNrSWQiLCJzZXRDdXJyZW50SWRUcmFjayIsImlzUGxheWluZyIsInNldElzUGxheWluZyIsInZvbHVtZSIsInNldFZvbHVtZSIsInNwb3RpZnlBcGkiLCJmZXRjaEN1cnJlbnRTb25nIiwiZ2V0TXlDdXJyZW50UGxheWluZ1RyYWNrIiwidGhlbiIsImJvZHkiLCJpdGVtIiwiaWQiLCJnZXRNeUN1cnJlbnRQbGF5YmFja1N0YXRlIiwiYm95IiwiaXNfcGxheWluZyIsImhhbmRsZVBsYXlQYXVzZSIsInBhdXNlIiwicGxheSIsImRlYm91bmNlZEFkanVzdFZvbHVtZSIsImNhdGNoIiwiZXJyIiwiZ2V0QWNjZXNzVG9rZW4iLCJkaXYiLCJjbGFzc05hbWUiLCJpbWciLCJzcmMiLCJhbGJ1bSIsImltYWdlcyIsInVybCIsImFsdCIsImgzIiwibmFtZSIsInAiLCJhcnRpc3RzIiwib25DbGljayIsImlucHV0IiwidHlwZSIsInZhbHVlIiwib25DaGFuZ2UiLCJlIiwiTnVtYmVyIiwidGFyZ2V0IiwibWluIiwibWF4Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./components/Player.jsx\n");
+
+/***/ }),
+
+/***/ "./components/Sidebar.jsx":
+/*!********************************!*\
+  !*** ./components/Sidebar.jsx ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @heroicons/react/outline */ \"@heroicons/react/outline\");\n/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @heroicons/react/solid */ \"@heroicons/react/solid\");\n/* harmony import */ var _heroicons_react_solid__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next-auth/react */ \"next-auth/react\");\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_auth_react__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _hooks_useSpotify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useSpotify */ \"./hooks/useSpotify.js\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_6__);\n/* harmony import */ var _atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../atoms/playlistAtom */ \"./atoms/playlistAtom.js\");\n\n\n\n\n\n\n\n\nconst Sidebar = ()=>{\n    const spotifyApi = (0,_hooks_useSpotify__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\n    const { data: session , status  } = (0,next_auth_react__WEBPACK_IMPORTED_MODULE_4__.useSession)();\n    const { 0: playlists , 1: setPlaylists  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);\n    const [playlistId, setPlaylistId] = (0,recoil__WEBPACK_IMPORTED_MODULE_6__.useRecoilState)(_atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_7__.playlistIdState);\n    console.log('you picked playlist', playlistId);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{\n        if (spotifyApi.getAccessToken()) {\n            spotifyApi.getUserPlaylists().then((data)=>{\n                setPlaylists(data.body.items);\n            });\n        }\n    }, [\n        session,\n        spotifyApi\n    ]);\n    return(/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"text-gray-500 p-5 text-xs lg:text-sm sm:max-w-[12rem] lg:max-w-[15rem] border-r border-gray-900 overflow-y-scroll h-screen scrollbar-hide hidden md:inline-flex pb-36\",\n        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n            className: \"space-y-4\",\n            children: [\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                    className: \"flex items-center space-x-2 hover:text-white\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__.HomeIcon, {\n                            className: \"h-5 w-5\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 37,\n                            columnNumber: 21\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: \"home\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 38,\n                            columnNumber: 21\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 36,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                    className: \"flex items-center space-x-2 hover:text-white\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__.SearchIcon, {\n                            className: \"h-5 w-5\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 41,\n                            columnNumber: 21\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: \"Search\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 42,\n                            columnNumber: 21\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 40,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                    className: \"flex items-center space-x-2 hover:text-white\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__.LibraryIcon, {\n                            className: \"h-5 w-5\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 45,\n                            columnNumber: 21\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: \"Library\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 46,\n                            columnNumber: 21\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 44,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"hr\", {\n                    className: \"border-top-[0.1x] border-gray-900\"\n                }, void 0, false, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 48,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                    className: \"flex items-center space-x-2 hover:text-white\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__.PlusCircleIcon, {\n                            className: \"h-5 w-5\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 50,\n                            columnNumber: 21\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: \"Create Playlist\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 51,\n                            columnNumber: 21\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 49,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                    className: \"flex items-center space-x-2 hover:text-white\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_solid__WEBPACK_IMPORTED_MODULE_3__.HeartIcon, {\n                            className: \"h-5 w-5 text-blue-500\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 54,\n                            columnNumber: 21\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: \"Liked Songs\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 55,\n                            columnNumber: 21\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 53,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"button\", {\n                    className: \"flex items-center space-x-2 hover:text-white\",\n                    children: [\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_2__.RssIcon, {\n                            className: \"h-5 w-5 text-green-500\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 58,\n                            columnNumber: 21\n                        }, undefined),\n                        /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                            children: \"Your Episodes\"\n                        }, void 0, false, {\n                            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                            lineNumber: 59,\n                            columnNumber: 21\n                        }, undefined)\n                    ]\n                }, void 0, true, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 57,\n                    columnNumber: 17\n                }, undefined),\n                /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"hr\", {\n                    className: \"border-top-[0.1x] border-gray-900\"\n                }, void 0, false, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                    lineNumber: 61,\n                    columnNumber: 17\n                }, undefined),\n                playlists.map((playlist)=>/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                        className: \"cursor-pointer hover:text-white\",\n                        onClick: ()=>setPlaylistId(playlist.id)\n                        ,\n                        children: playlist.name\n                    }, playlist.id, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n                        lineNumber: 64,\n                        columnNumber: 21\n                    }, undefined)\n                )\n            ]\n        }, void 0, true, {\n            fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n            lineNumber: 35,\n            columnNumber: 13\n        }, undefined)\n    }, void 0, false, {\n        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Sidebar.jsx\",\n        lineNumber: 32,\n        columnNumber: 9\n    }, undefined));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sidebar);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jb21wb25lbnRzL1NpZGViYXIuanN4LmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBa0Q7QUFPYjtBQUNhO0FBQ0c7QUFDVDtBQUNMO0FBQ2dCO0FBRXZELEtBQUssQ0FBQ2MsT0FBTyxPQUFTLENBQUM7SUFDbkIsS0FBSyxDQUFDQyxVQUFVLEdBQUdKLDZEQUFVO0lBQzdCLEtBQUssQ0FBQyxDQUFDSyxDQUFBQSxJQUFJLEVBQUVDLE9BQU8sR0FBRUMsTUFBTSxFQUFDLENBQUMsR0FBR1IsMkRBQVU7SUFDM0MsS0FBSyxNQUFFUyxTQUFTLE1BQUVDLFlBQVksTUFBSWxCLCtDQUFRLENBQUMsQ0FBQyxDQUFDO0lBQzdDLEtBQUssRUFBRW1CLFVBQVUsRUFBRUMsYUFBYSxJQUFJVixzREFBYyxDQUFDQyxnRUFBZTtJQUVsRVUsT0FBTyxDQUFDQyxHQUFHLENBQUMsQ0FBcUIsc0JBQUVILFVBQVU7SUFFN0NwQixnREFBUyxLQUFPLENBQUM7UUFDYixFQUFFLEVBQUNjLFVBQVUsQ0FBQ1UsY0FBYyxJQUFJLENBQUM7WUFDN0JWLFVBQVUsQ0FBQ1csZ0JBQWdCLEdBQUdDLElBQUksRUFBRVgsSUFBSSxHQUFLLENBQUM7Z0JBQzFDSSxZQUFZLENBQUNKLElBQUksQ0FBQ1ksSUFBSSxDQUFDQyxLQUFLO1lBQ2hDLENBQUM7UUFDTCxDQUFDO0lBQ0wsQ0FBQyxFQUFFLENBQUNaO1FBQUFBLE9BQU87UUFBRUYsVUFBVTtJQUFBLENBQUM7SUFFeEIsTUFBTSw2RUFDRGUsQ0FBRztRQUFDQyxTQUFTLEVBQUMsQ0FFNEI7OEZBQ3RDRCxDQUFHO1lBQUNDLFNBQVMsRUFBQyxDQUFXOzs0RkFDckJDLENBQU07b0JBQUNELFNBQVMsRUFBQyxDQUE4Qzs7b0dBQzNENUIsOERBQVE7NEJBQUM0QixTQUFTLEVBQUMsQ0FBUzs7Ozs7O29HQUM1QkUsQ0FBQztzQ0FBQyxDQUFJOzs7Ozs7Ozs7Ozs7NEZBRVZELENBQU07b0JBQUNELFNBQVMsRUFBQyxDQUE4Qzs7b0dBQzNEM0IsZ0VBQVU7NEJBQUMyQixTQUFTLEVBQUMsQ0FBUzs7Ozs7O29HQUM5QkUsQ0FBQztzQ0FBQyxDQUFNOzs7Ozs7Ozs7Ozs7NEZBRVpELENBQU07b0JBQUNELFNBQVMsRUFBQyxDQUE4Qzs7b0dBQzNEMUIsaUVBQVc7NEJBQUMwQixTQUFTLEVBQUMsQ0FBUzs7Ozs7O29HQUMvQkUsQ0FBQztzQ0FBQyxDQUFPOzs7Ozs7Ozs7Ozs7NEZBRWJDLENBQUU7b0JBQUNILFNBQVMsRUFBQyxDQUFtQzs7Ozs7OzRGQUNoREMsQ0FBTTtvQkFBQ0QsU0FBUyxFQUFDLENBQThDOztvR0FDM0R6QixvRUFBYzs0QkFBQ3lCLFNBQVMsRUFBQyxDQUFTOzs7Ozs7b0dBQ2xDRSxDQUFDO3NDQUFDLENBQWU7Ozs7Ozs7Ozs7Ozs0RkFFckJELENBQU07b0JBQUNELFNBQVMsRUFBQyxDQUE4Qzs7b0dBQzNEdkIsNkRBQVM7NEJBQUN1QixTQUFTLEVBQUMsQ0FBdUI7Ozs7OztvR0FDM0NFLENBQUM7c0NBQUMsQ0FBVzs7Ozs7Ozs7Ozs7OzRGQUVqQkQsQ0FBTTtvQkFBQ0QsU0FBUyxFQUFDLENBQThDOztvR0FDM0R4Qiw2REFBTzs0QkFBQ3dCLFNBQVMsRUFBQyxDQUF3Qjs7Ozs7O29HQUMxQ0UsQ0FBQztzQ0FBQyxDQUFhOzs7Ozs7Ozs7Ozs7NEZBRW5CQyxDQUFFO29CQUFDSCxTQUFTLEVBQUMsQ0FBbUM7Ozs7OztnQkFFaERaLFNBQVMsQ0FBQ2dCLEdBQUcsRUFBRUMsUUFBUSwrRUFDbkJILENBQUM7d0JBRUVGLFNBQVMsRUFBQyxDQUFpQzt3QkFDM0NNLE9BQU8sTUFBUWYsYUFBYSxDQUFDYyxRQUFRLENBQUNFLEVBQUU7O2tDQUV2Q0YsUUFBUSxDQUFDRyxJQUFJO3VCQUpUSCxRQUFRLENBQUNFLEVBQUU7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBV3hDLENBQUM7QUFFRCxpRUFBZXhCLE9BQU8iLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9jb21wb25lbnRzL1NpZGViYXIuanN4PzRjYjQiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZUVmZmVjdCwgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCdcbmltcG9ydCB7XG4gICAgSG9tZUljb24sXG4gICAgU2VhcmNoSWNvbixcbiAgICBMaWJyYXJ5SWNvbixcbiAgICBQbHVzQ2lyY2xlSWNvbixcbiAgICBSc3NJY29uLFxuICAgIH0gZnJvbSBcIkBoZXJvaWNvbnMvcmVhY3Qvb3V0bGluZVwiO1xuaW1wb3J0IHsgSGVhcnRJY29uIH0gZnJvbSAnQGhlcm9pY29ucy9yZWFjdC9zb2xpZCdcbmltcG9ydCB7IHNpZ25PdXQsIHVzZVNlc3Npb24gfSBmcm9tICduZXh0LWF1dGgvcmVhY3QnXG5pbXBvcnQgdXNlU3BvdGlmeSBmcm9tICcuLi9ob29rcy91c2VTcG90aWZ5JztcbmltcG9ydCB7IHVzZVJlY29pbFN0YXRlIH0gZnJvbSAncmVjb2lsJztcbmltcG9ydCB7IHBsYXlsaXN0SWRTdGF0ZSB9IGZyb20gJy4uL2F0b21zL3BsYXlsaXN0QXRvbSdcblxuY29uc3QgU2lkZWJhciA9ICgpID0+IHtcbiAgICBjb25zdCBzcG90aWZ5QXBpID0gdXNlU3BvdGlmeSgpO1xuICAgIGNvbnN0IHtkYXRhOiBzZXNzaW9uLCBzdGF0dXMgfSA9IHVzZVNlc3Npb24oKTtcbiAgICBjb25zdCBbcGxheWxpc3RzLCBzZXRQbGF5bGlzdHNdID0gdXNlU3RhdGUoW10pO1xuICAgIGNvbnN0IFtwbGF5bGlzdElkLCBzZXRQbGF5bGlzdElkXSA9IHVzZVJlY29pbFN0YXRlKHBsYXlsaXN0SWRTdGF0ZSlcblxuICAgIGNvbnNvbGUubG9nKCd5b3UgcGlja2VkIHBsYXlsaXN0JywgcGxheWxpc3RJZClcblxuICAgIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgICAgIGlmKHNwb3RpZnlBcGkuZ2V0QWNjZXNzVG9rZW4oKSkge1xuICAgICAgICAgICAgc3BvdGlmeUFwaS5nZXRVc2VyUGxheWxpc3RzKCkudGhlbigoZGF0YSkgPT4ge1xuICAgICAgICAgICAgICAgIHNldFBsYXlsaXN0cyhkYXRhLmJvZHkuaXRlbXMpO1xuICAgICAgICAgICAgfSlcbiAgICAgICAgfVxuICAgIH0sIFtzZXNzaW9uLCBzcG90aWZ5QXBpXSlcblxuICAgIHJldHVybiAoXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPSd0ZXh0LWdyYXktNTAwIHAtNSB0ZXh0LXhzIGxnOnRleHQtc20gc206bWF4LXctWzEycmVtXSBcbiAgICAgICAgbGc6bWF4LXctWzE1cmVtXSBib3JkZXItciBib3JkZXItZ3JheS05MDAgb3ZlcmZsb3cteS1zY3JvbGwgaC1zY3JlZW4gXG4gICAgICAgIHNjcm9sbGJhci1oaWRlIGhpZGRlbiBtZDppbmxpbmUtZmxleCBwYi0zNic+XG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0nc3BhY2UteS00Jz5cbiAgICAgICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0nZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yIGhvdmVyOnRleHQtd2hpdGUnPlxuICAgICAgICAgICAgICAgICAgICA8SG9tZUljb24gY2xhc3NOYW1lPSdoLTUgdy01JyAvPlxuICAgICAgICAgICAgICAgICAgICA8cD5ob21lPC9wPlxuICAgICAgICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSdmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgaG92ZXI6dGV4dC13aGl0ZSc+XG4gICAgICAgICAgICAgICAgICAgIDxTZWFyY2hJY29uIGNsYXNzTmFtZT0naC01IHctNScgLz5cbiAgICAgICAgICAgICAgICAgICAgPHA+U2VhcmNoPC9wPlxuICAgICAgICAgICAgICAgIDwvYnV0dG9uPlxuICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSdmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgaG92ZXI6dGV4dC13aGl0ZSc+XG4gICAgICAgICAgICAgICAgICAgIDxMaWJyYXJ5SWNvbiBjbGFzc05hbWU9J2gtNSB3LTUnIC8+XG4gICAgICAgICAgICAgICAgICAgIDxwPkxpYnJhcnk8L3A+XG4gICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgICAgPGhyIGNsYXNzTmFtZT0nYm9yZGVyLXRvcC1bMC4xeF0gYm9yZGVyLWdyYXktOTAwJyAvPlxuICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPSdmbGV4IGl0ZW1zLWNlbnRlciBzcGFjZS14LTIgaG92ZXI6dGV4dC13aGl0ZSc+XG4gICAgICAgICAgICAgICAgICAgIDxQbHVzQ2lyY2xlSWNvbiBjbGFzc05hbWU9J2gtNSB3LTUnIC8+XG4gICAgICAgICAgICAgICAgICAgIDxwPkNyZWF0ZSBQbGF5bGlzdDwvcD5cbiAgICAgICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0nZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yIGhvdmVyOnRleHQtd2hpdGUnPlxuICAgICAgICAgICAgICAgICAgICA8SGVhcnRJY29uIGNsYXNzTmFtZT0naC01IHctNSB0ZXh0LWJsdWUtNTAwJyAvPlxuICAgICAgICAgICAgICAgICAgICA8cD5MaWtlZCBTb25nczwvcD5cbiAgICAgICAgICAgICAgICA8L2J1dHRvbj5cbiAgICAgICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT0nZmxleCBpdGVtcy1jZW50ZXIgc3BhY2UteC0yIGhvdmVyOnRleHQtd2hpdGUnPlxuICAgICAgICAgICAgICAgICAgICA8UnNzSWNvbiBjbGFzc05hbWU9J2gtNSB3LTUgdGV4dC1ncmVlbi01MDAnIC8+XG4gICAgICAgICAgICAgICAgICAgIDxwPllvdXIgRXBpc29kZXM8L3A+XG4gICAgICAgICAgICAgICAgPC9idXR0b24+XG4gICAgICAgICAgICAgICAgPGhyIGNsYXNzTmFtZT0nYm9yZGVyLXRvcC1bMC4xeF0gYm9yZGVyLWdyYXktOTAwJyAvPlxuXG4gICAgICAgICAgICAgICAge3BsYXlsaXN0cy5tYXAoKHBsYXlsaXN0KSA9PiAoXG4gICAgICAgICAgICAgICAgICAgIDxwIFxuICAgICAgICAgICAgICAgICAgICAgICAga2V5PXtwbGF5bGlzdC5pZH0gXG4gICAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9J2N1cnNvci1wb2ludGVyIGhvdmVyOnRleHQtd2hpdGUnXG4gICAgICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRQbGF5bGlzdElkKHBsYXlsaXN0LmlkKX1cbiAgICAgICAgICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgICAgICAgICAge3BsYXlsaXN0Lm5hbWV9XG4gICAgICAgICAgICAgICAgICAgIDwvcD5cbiAgICAgICAgICAgICAgICApKX1cbiAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICApXG59XG5cbmV4cG9ydCBkZWZhdWx0IFNpZGViYXIiXSwibmFtZXMiOlsiUmVhY3QiLCJ1c2VFZmZlY3QiLCJ1c2VTdGF0ZSIsIkhvbWVJY29uIiwiU2VhcmNoSWNvbiIsIkxpYnJhcnlJY29uIiwiUGx1c0NpcmNsZUljb24iLCJSc3NJY29uIiwiSGVhcnRJY29uIiwic2lnbk91dCIsInVzZVNlc3Npb24iLCJ1c2VTcG90aWZ5IiwidXNlUmVjb2lsU3RhdGUiLCJwbGF5bGlzdElkU3RhdGUiLCJTaWRlYmFyIiwic3BvdGlmeUFwaSIsImRhdGEiLCJzZXNzaW9uIiwic3RhdHVzIiwicGxheWxpc3RzIiwic2V0UGxheWxpc3RzIiwicGxheWxpc3RJZCIsInNldFBsYXlsaXN0SWQiLCJjb25zb2xlIiwibG9nIiwiZ2V0QWNjZXNzVG9rZW4iLCJnZXRVc2VyUGxheWxpc3RzIiwidGhlbiIsImJvZHkiLCJpdGVtcyIsImRpdiIsImNsYXNzTmFtZSIsImJ1dHRvbiIsInAiLCJociIsIm1hcCIsInBsYXlsaXN0Iiwib25DbGljayIsImlkIiwibmFtZSJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./components/Sidebar.jsx\n");
+
+/***/ }),
+
+/***/ "./components/Song.jsx":
+/*!*****************************!*\
+  !*** ./components/Song.jsx ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _hooks_useSpotify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hooks/useSpotify */ \"./hooks/useSpotify.js\");\n/* harmony import */ var _lib_time__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/time */ \"./lib/time.js\");\n/* harmony import */ var _atoms_songAtom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../atoms/songAtom */ \"./atoms/songAtom.js\");\n\n\n\n\n\n\nconst Song = ({ order , track  })=>{\n    const spotifyApi = (0,_hooks_useSpotify__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const [currentTrackId, setCurrentTrackId] = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_atoms_songAtom__WEBPACK_IMPORTED_MODULE_5__.currentTrackIdState);\n    const [isPlaying, setIsPlaying] = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilState)(_atoms_songAtom__WEBPACK_IMPORTED_MODULE_5__.isPlayingState);\n    const playSong = ()=>{\n        setCurrentTrackId(track.track.id);\n        setIsPlaying(true);\n        spotifyApi.play({\n            uris: [\n                track.track.uri\n            ]\n        });\n    };\n    return(/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"grid grid-cols-2 text-gray-500 py-4 px-5 hover:bg-gray-900 rounded-lg cursor-pointer\",\n        onClick: playSong,\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"flex items-center space-x-4\",\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                        children: order + 1\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                        lineNumber: 24,\n                        columnNumber: 13\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"img\", {\n                        className: \"h-10 w-10\",\n                        src: track.track.album.images[0].url,\n                        alt: \"\"\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                        lineNumber: 25,\n                        columnNumber: 13\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                        children: [\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                                className: \"w-36 lg:w-64 xl:w-80 truncate text-white\",\n                                children: track.track.name\n                            }, void 0, false, {\n                                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                                lineNumber: 27,\n                                columnNumber: 17\n                            }, undefined),\n                            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                                className: \"w-40\",\n                                children: track.track.artists[0].name\n                            }, void 0, false, {\n                                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                                lineNumber: 28,\n                                columnNumber: 17\n                            }, undefined)\n                        ]\n                    }, void 0, true, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                        lineNumber: 26,\n                        columnNumber: 13\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                lineNumber: 23,\n                columnNumber: 9\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"flex items-center justify-between ml-auto md:ml-0\",\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                        className: \"hidden md:inline w-40\",\n                        children: track.track.album.name\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                        lineNumber: 32,\n                        columnNumber: 13\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                        children: (0,_lib_time__WEBPACK_IMPORTED_MODULE_4__.millisToMinutesAndSeconds)(track.track.duration_ms)\n                    }, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                        lineNumber: 33,\n                        columnNumber: 13\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n                lineNumber: 31,\n                columnNumber: 9\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Song.jsx\",\n        lineNumber: 22,\n        columnNumber: 5\n    }, undefined));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Song);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jb21wb25lbnRzL1NvbmcuanN4LmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7O0FBQXlCO0FBQ2M7QUFDSztBQUNXO0FBQ2dCO0FBR3ZFLEtBQUssQ0FBQ00sSUFBSSxJQUFJLENBQUMsQ0FBQ0MsS0FBSyxHQUFFQyxLQUFLLEVBQUMsQ0FBQyxHQUFLLENBQUM7SUFDaEMsS0FBSyxDQUFDQyxVQUFVLEdBQUdQLDZEQUFVO0lBRTdCLEtBQUssRUFBRVEsY0FBYyxFQUFFQyxpQkFBaUIsSUFBSVYsc0RBQWMsQ0FBQ0csZ0VBQW1CO0lBQzlFLEtBQUssRUFBRVEsU0FBUyxFQUFFQyxZQUFZLElBQUlaLHNEQUFjLENBQUNJLDJEQUFjO0lBRS9ELEtBQUssQ0FBQ1MsUUFBUSxPQUFTLENBQUM7UUFDcEJILGlCQUFpQixDQUFDSCxLQUFLLENBQUNBLEtBQUssQ0FBQ08sRUFBRTtRQUNoQ0YsWUFBWSxDQUFDLElBQUk7UUFDakJKLFVBQVUsQ0FBQ08sSUFBSSxDQUFDLENBQUM7WUFDYkMsSUFBSSxFQUFFLENBQUNUO2dCQUFBQSxLQUFLLENBQUNBLEtBQUssQ0FBQ1UsR0FBRztZQUFBLENBQUM7UUFDM0IsQ0FBQztJQUNMLENBQUM7SUFDSCxNQUFNLDZFQUNIQyxDQUFHO1FBQUNDLFNBQVMsRUFBQyxDQUFzRjtRQUFDQyxPQUFPLEVBQUVQLFFBQVE7O3dGQUNsSEssQ0FBRztnQkFBQ0MsU0FBUyxFQUFDLENBQTZCOztnR0FDdkNFLENBQUM7a0NBQUVmLEtBQUssR0FBRyxDQUFDOzs7Ozs7Z0dBQ1pnQixDQUFHO3dCQUFDSCxTQUFTLEVBQUMsQ0FBVzt3QkFBQ0ksR0FBRyxFQUFFaEIsS0FBSyxDQUFDQSxLQUFLLENBQUNpQixLQUFLLENBQUNDLE1BQU0sQ0FBQyxDQUFDLEVBQUVDLEdBQUc7d0JBQUVDLEdBQUcsRUFBQyxDQUFFOzs7Ozs7Z0dBQ3RFVCxDQUFHOzt3R0FDQ0csQ0FBQztnQ0FBQ0YsU0FBUyxFQUFDLENBQTBDOzBDQUFFWixLQUFLLENBQUNBLEtBQUssQ0FBQ3FCLElBQUk7Ozs7Ozt3R0FDeEVQLENBQUM7Z0NBQUNGLFNBQVMsRUFBQyxDQUFNOzBDQUFFWixLQUFLLENBQUNBLEtBQUssQ0FBQ3NCLE9BQU8sQ0FBQyxDQUFDLEVBQUVELElBQUk7Ozs7Ozs7Ozs7Ozs7Ozs7Ozt3RkFHdkRWLENBQUc7Z0JBQUNDLFNBQVMsRUFBQyxDQUFtRDs7Z0dBQzdERSxDQUFDO3dCQUFDRixTQUFTLEVBQUMsQ0FBdUI7a0NBQUVaLEtBQUssQ0FBQ0EsS0FBSyxDQUFDaUIsS0FBSyxDQUFDSSxJQUFJOzs7Ozs7Z0dBQzNEUCxDQUFDO2tDQUFFbkIsb0VBQXlCLENBQUNLLEtBQUssQ0FBQ0EsS0FBSyxDQUFDdUIsV0FBVzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBSWpFLENBQUM7QUFFRCxpRUFBZXpCLElBQUkiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9jb21wb25lbnRzL1NvbmcuanN4PzhlYTAiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0J1xuaW1wb3J0IHsgdXNlUmVjb2lsU3RhdGUgfSBmcm9tICdyZWNvaWwnO1xuaW1wb3J0IHVzZVNwb3RpZnkgZnJvbSAnLi4vaG9va3MvdXNlU3BvdGlmeSc7XG5pbXBvcnQgeyBtaWxsaXNUb01pbnV0ZXNBbmRTZWNvbmRzIH0gZnJvbSAnLi4vbGliL3RpbWUnXG5pbXBvcnQgeyBjdXJyZW50VHJhY2tJZFN0YXRlLCBpc1BsYXlpbmdTdGF0ZSB9IGZyb20gJy4uL2F0b21zL3NvbmdBdG9tJ1xuXG5cbmNvbnN0IFNvbmcgPSAoeyBvcmRlciwgdHJhY2sgfSkgPT4ge1xuICAgIGNvbnN0IHNwb3RpZnlBcGkgPSB1c2VTcG90aWZ5KCk7XG5cbiAgICBjb25zdCBbY3VycmVudFRyYWNrSWQsIHNldEN1cnJlbnRUcmFja0lkXSA9IHVzZVJlY29pbFN0YXRlKGN1cnJlbnRUcmFja0lkU3RhdGUpXG4gICAgY29uc3QgW2lzUGxheWluZywgc2V0SXNQbGF5aW5nXSA9IHVzZVJlY29pbFN0YXRlKGlzUGxheWluZ1N0YXRlKVxuXG4gICAgY29uc3QgcGxheVNvbmcgPSAoKSA9PiB7XG4gICAgICAgIHNldEN1cnJlbnRUcmFja0lkKHRyYWNrLnRyYWNrLmlkKTtcbiAgICAgICAgc2V0SXNQbGF5aW5nKHRydWUpO1xuICAgICAgICBzcG90aWZ5QXBpLnBsYXkoe1xuICAgICAgICAgICAgdXJpczogW3RyYWNrLnRyYWNrLnVyaV0sXG4gICAgICAgIH0pXG4gICAgfVxuICByZXR1cm4gKFxuICAgIDxkaXYgY2xhc3NOYW1lPSdncmlkIGdyaWQtY29scy0yIHRleHQtZ3JheS01MDAgcHktNCBweC01IGhvdmVyOmJnLWdyYXktOTAwIHJvdW5kZWQtbGcgY3Vyc29yLXBvaW50ZXInIG9uQ2xpY2s9e3BsYXlTb25nfT5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9J2ZsZXggaXRlbXMtY2VudGVyIHNwYWNlLXgtNCc+XG4gICAgICAgICAgICA8cD57b3JkZXIgKyAxfTwvcD5cbiAgICAgICAgICAgIDxpbWcgY2xhc3NOYW1lPSdoLTEwIHctMTAnIHNyYz17dHJhY2sudHJhY2suYWxidW0uaW1hZ2VzWzBdLnVybH0gYWx0PVwiXCIgLz5cbiAgICAgICAgICAgIDxkaXY+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSd3LTM2IGxnOnctNjQgeGw6dy04MCB0cnVuY2F0ZSB0ZXh0LXdoaXRlJz57dHJhY2sudHJhY2submFtZX08L3A+XG4gICAgICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSd3LTQwJz57dHJhY2sudHJhY2suYXJ0aXN0c1swXS5uYW1lfTwvcD5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICAgICAgPGRpdiBjbGFzc05hbWU9J2ZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBtbC1hdXRvIG1kOm1sLTAnPlxuICAgICAgICAgICAgPHAgY2xhc3NOYW1lPSdoaWRkZW4gbWQ6aW5saW5lIHctNDAnPnt0cmFjay50cmFjay5hbGJ1bS5uYW1lfTwvcD5cbiAgICAgICAgICAgIDxwPnttaWxsaXNUb01pbnV0ZXNBbmRTZWNvbmRzKHRyYWNrLnRyYWNrLmR1cmF0aW9uX21zKX08L3A+XG4gICAgICAgIDwvZGl2PlxuICAgIDwvZGl2PlxuICApXG59XG5cbmV4cG9ydCBkZWZhdWx0IFNvbmciXSwibmFtZXMiOlsiUmVhY3QiLCJ1c2VSZWNvaWxTdGF0ZSIsInVzZVNwb3RpZnkiLCJtaWxsaXNUb01pbnV0ZXNBbmRTZWNvbmRzIiwiY3VycmVudFRyYWNrSWRTdGF0ZSIsImlzUGxheWluZ1N0YXRlIiwiU29uZyIsIm9yZGVyIiwidHJhY2siLCJzcG90aWZ5QXBpIiwiY3VycmVudFRyYWNrSWQiLCJzZXRDdXJyZW50VHJhY2tJZCIsImlzUGxheWluZyIsInNldElzUGxheWluZyIsInBsYXlTb25nIiwiaWQiLCJwbGF5IiwidXJpcyIsInVyaSIsImRpdiIsImNsYXNzTmFtZSIsIm9uQ2xpY2siLCJwIiwiaW1nIiwic3JjIiwiYWxidW0iLCJpbWFnZXMiLCJ1cmwiLCJhbHQiLCJuYW1lIiwiYXJ0aXN0cyIsImR1cmF0aW9uX21zIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./components/Song.jsx\n");
+
+/***/ }),
+
+/***/ "./components/Songs.js":
+/*!*****************************!*\
+  !*** ./components/Songs.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../atoms/playlistAtom */ \"./atoms/playlistAtom.js\");\n/* harmony import */ var _Song__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Song */ \"./components/Song.jsx\");\n\n\n\n\n\nconst Songs = ()=>{\n    const playlist = (0,recoil__WEBPACK_IMPORTED_MODULE_2__.useRecoilValue)(_atoms_playlistAtom__WEBPACK_IMPORTED_MODULE_3__.playlistState);\n    return(/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"px-8 flex flex-col space space-y-1 pb-28 text-white\",\n        children: playlist === null || playlist === void 0 ? void 0 : playlist.tracks.items.map((track, i)=>/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_Song__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n                track: track,\n                order: i\n            }, track.track.id, false, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Songs.js\",\n                lineNumber: 11,\n                columnNumber: 13\n            }, undefined)\n        )\n    }, void 0, false, {\n        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/components/Songs.js\",\n        lineNumber: 9,\n        columnNumber: 5\n    }, undefined));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Songs);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9jb21wb25lbnRzL1NvbmdzLmpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7QUFBeUI7QUFDYztBQUNjO0FBQzVCO0FBRXpCLEtBQUssQ0FBQ0ksS0FBSyxPQUFTLENBQUM7SUFDakIsS0FBSyxDQUFDQyxRQUFRLEdBQUdKLHNEQUFjLENBQUNDLDhEQUFhO0lBQy9DLE1BQU0sNkVBQ0hJLENBQUc7UUFBQ0MsU0FBUyxFQUFDLENBQXFEO2tCQUMvREYsUUFBUSxhQUFSQSxRQUFRLEtBQVJBLElBQUksQ0FBSkEsQ0FBZ0IsR0FBaEJBLElBQUksQ0FBSkEsQ0FBZ0IsR0FBaEJBLFFBQVEsQ0FBRUcsTUFBTSxDQUFDQyxLQUFLLENBQUNDLEdBQUcsRUFBRUMsS0FBSyxFQUFFQyxDQUFDLCtFQUNoQ1QsNkNBQUk7Z0JBQXNCUSxLQUFLLEVBQUVBLEtBQUs7Z0JBQUVFLEtBQUssRUFBRUQsQ0FBQztlQUF0Q0QsS0FBSyxDQUFDQSxLQUFLLENBQUNHLEVBQUU7Ozs7Ozs7Ozs7O0FBSXJDLENBQUM7QUFFRCxpRUFBZVYsS0FBSyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL2NvbXBvbmVudHMvU29uZ3MuanM/NjhiZiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXG5pbXBvcnQgeyB1c2VSZWNvaWxWYWx1ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQgeyBwbGF5bGlzdFN0YXRlIH0gZnJvbSAnLi4vYXRvbXMvcGxheWxpc3RBdG9tJztcbmltcG9ydCBTb25nIGZyb20gJy4vU29uZydcblxuY29uc3QgU29uZ3MgPSAoKSA9PiB7XG4gICAgY29uc3QgcGxheWxpc3QgPSB1c2VSZWNvaWxWYWx1ZShwbGF5bGlzdFN0YXRlKTtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT0ncHgtOCBmbGV4IGZsZXgtY29sIHNwYWNlIHNwYWNlLXktMSBwYi0yOCB0ZXh0LXdoaXRlJz5cbiAgICAgICAge3BsYXlsaXN0Py50cmFja3MuaXRlbXMubWFwKCh0cmFjaywgaSkgPT4gKFxuICAgICAgICAgICAgPFNvbmcga2V5PXt0cmFjay50cmFjay5pZH0gdHJhY2s9e3RyYWNrfSBvcmRlcj17aX0gLz5cbiAgICAgICAgKSl9XG4gICAgPC9kaXY+XG4gIClcbn1cblxuZXhwb3J0IGRlZmF1bHQgU29uZ3MiXSwibmFtZXMiOlsiUmVhY3QiLCJ1c2VSZWNvaWxWYWx1ZSIsInBsYXlsaXN0U3RhdGUiLCJTb25nIiwiU29uZ3MiLCJwbGF5bGlzdCIsImRpdiIsImNsYXNzTmFtZSIsInRyYWNrcyIsIml0ZW1zIiwibWFwIiwidHJhY2siLCJpIiwib3JkZXIiLCJpZCJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./components/Songs.js\n");
+
+/***/ }),
+
+/***/ "./hooks/useSongInfo.jsx":
+/*!*******************************!*\
+  !*** ./hooks/useSongInfo.jsx ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! recoil */ \"recoil\");\n/* harmony import */ var recoil__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(recoil__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _atoms_songAtom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../atoms/songAtom */ \"./atoms/songAtom.js\");\n/* harmony import */ var _useSpotify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./useSpotify */ \"./hooks/useSpotify.js\");\n\n\n\n\n\nconst useSongInfo = ()=>{\n    const spotifyApi = (0,_useSpotify__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n    const [currentIdTrack, setCurrentIdTrack] = (0,recoil__WEBPACK_IMPORTED_MODULE_1__.useRecoilState)(_atoms_songAtom__WEBPACK_IMPORTED_MODULE_2__.currentTrackIdState);\n    const { 0: songInfo , 1: setSongInfo  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{\n        const fetchSongInfo = async ()=>{\n            if (currentIdTrack) {\n                const trackInfo = await fetch(`https://api.spotify.com/v1/tracks/${currentIdTrack}`, {\n                    headers: {\n                        Authorization: `Bearer ${spotifyApi.getAccessToken()}`\n                    }\n                }).then((res)=>res.json()\n                );\n                setSongInfo(trackInfo);\n            }\n        };\n        fetchSongInfo();\n    }, [\n        currentIdTrack,\n        spotifyApi\n    ]);\n    return songInfo;\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useSongInfo);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ob29rcy91c2VTb25nSW5mby5qc3guanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUF1QztBQUNOO0FBQ007QUFDZ0I7QUFDbEI7QUFFckMsS0FBSyxDQUFDTSxXQUFXLE9BQVMsQ0FBQztJQUN2QixLQUFLLENBQUNDLFVBQVUsR0FBR0YsdURBQVU7SUFDN0IsS0FBSyxFQUFHRyxjQUFjLEVBQUVDLGlCQUFpQixJQUFJTixzREFBYyxDQUFDQyxnRUFBbUI7SUFDL0UsS0FBSyxNQUFHTSxRQUFRLE1BQUVDLFdBQVcsTUFBS1YsK0NBQVEsQ0FBQyxJQUFJO0lBRS9DQyxnREFBUyxLQUFPLENBQUM7UUFDYixLQUFLLENBQUNVLGFBQWEsYUFBZSxDQUFDO1lBQy9CLEVBQUUsRUFBRUosY0FBYyxFQUFFLENBQUM7Z0JBQ2pCLEtBQUssQ0FBQ0ssU0FBUyxHQUFHLEtBQUssQ0FBQ0MsS0FBSyxFQUN4QixrQ0FBa0MsRUFBRU4sY0FBYyxJQUNuRCxDQUFDO29CQUNHTyxPQUFPLEVBQUUsQ0FBQzt3QkFDTkMsYUFBYSxHQUFHLE9BQU8sRUFBRVQsVUFBVSxDQUFDVSxjQUFjO29CQUN0RCxDQUFDO2dCQUNMLENBQUMsRUFDSEMsSUFBSSxFQUFDQyxHQUFHLEdBQUlBLEdBQUcsQ0FBQ0MsSUFBSTs7Z0JBQ3RCVCxXQUFXLENBQUNFLFNBQVM7WUFDekIsQ0FBQztRQUNMLENBQUM7UUFDREQsYUFBYTtJQUNqQixDQUFDLEVBQUUsQ0FBQ0o7UUFBQUEsY0FBYztRQUFFRCxVQUFVO0lBQUEsQ0FBQztJQUVqQyxNQUFNLENBQUNHLFFBQVE7QUFDakIsQ0FBQztBQUVELGlFQUFlSixXQUFXIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vaG9va3MvdXNlU29uZ0luZm8uanN4P2MyNWIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0LCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnXG5pbXBvcnQgeyB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyB1c2VSZWNvaWxTdGF0ZSB9IGZyb20gJ3JlY29pbCc7XG5pbXBvcnQgeyBjdXJyZW50VHJhY2tJZFN0YXRlIH0gZnJvbSAnLi4vYXRvbXMvc29uZ0F0b20nXG5pbXBvcnQgdXNlU3BvdGlmeSBmcm9tICcuL3VzZVNwb3RpZnknXG5cbmNvbnN0IHVzZVNvbmdJbmZvID0gKCkgPT4ge1xuICAgIGNvbnN0IHNwb3RpZnlBcGkgPSB1c2VTcG90aWZ5KCk7XG4gICAgY29uc3QgWyBjdXJyZW50SWRUcmFjaywgc2V0Q3VycmVudElkVHJhY2tdID0gdXNlUmVjb2lsU3RhdGUoY3VycmVudFRyYWNrSWRTdGF0ZSk7XG4gICAgY29uc3QgWyBzb25nSW5mbywgc2V0U29uZ0luZm8gXSA9IHVzZVN0YXRlKG51bGwpO1xuXG4gICAgdXNlRWZmZWN0KCgpID0+IHtcbiAgICAgICAgY29uc3QgZmV0Y2hTb25nSW5mbyA9IGFzeW5jICgpID0+IHtcbiAgICAgICAgICAgIGlmIChjdXJyZW50SWRUcmFjaykge1xuICAgICAgICAgICAgICAgIGNvbnN0IHRyYWNrSW5mbyA9IGF3YWl0IGZldGNoKFxuICAgICAgICAgICAgICAgICAgICBgaHR0cHM6Ly9hcGkuc3BvdGlmeS5jb20vdjEvdHJhY2tzLyR7Y3VycmVudElkVHJhY2t9YCxcbiAgICAgICAgICAgICAgICAgICAge1xuICAgICAgICAgICAgICAgICAgICAgICAgaGVhZGVyczoge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIEF1dGhvcml6YXRpb246IGBCZWFyZXIgJHtzcG90aWZ5QXBpLmdldEFjY2Vzc1Rva2VuKCl9YFxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgKS50aGVuKHJlcyA9PiByZXMuanNvbigpKTtcbiAgICAgICAgICAgICAgICBzZXRTb25nSW5mbyh0cmFja0luZm8pO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIGZldGNoU29uZ0luZm8oKTtcbiAgICB9LCBbY3VycmVudElkVHJhY2ssIHNwb3RpZnlBcGldKVxuXG4gIHJldHVybiBzb25nSW5mbztcbn1cblxuZXhwb3J0IGRlZmF1bHQgdXNlU29uZ0luZm8iXSwibmFtZXMiOlsiUmVhY3QiLCJ1c2VTdGF0ZSIsInVzZUVmZmVjdCIsInVzZVJlY29pbFN0YXRlIiwiY3VycmVudFRyYWNrSWRTdGF0ZSIsInVzZVNwb3RpZnkiLCJ1c2VTb25nSW5mbyIsInNwb3RpZnlBcGkiLCJjdXJyZW50SWRUcmFjayIsInNldEN1cnJlbnRJZFRyYWNrIiwic29uZ0luZm8iLCJzZXRTb25nSW5mbyIsImZldGNoU29uZ0luZm8iLCJ0cmFja0luZm8iLCJmZXRjaCIsImhlYWRlcnMiLCJBdXRob3JpemF0aW9uIiwiZ2V0QWNjZXNzVG9rZW4iLCJ0aGVuIiwicmVzIiwianNvbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./hooks/useSongInfo.jsx\n");
+
+/***/ }),
+
+/***/ "./hooks/useSpotify.js":
+/*!*****************************!*\
+  !*** ./hooks/useSpotify.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next-auth/react */ \"next-auth/react\");\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_auth_react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var spotify_web_api_node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! spotify-web-api-node */ \"spotify-web-api-node\");\n/* harmony import */ var spotify_web_api_node__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(spotify_web_api_node__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nconst spotifyApi = new (spotify_web_api_node__WEBPACK_IMPORTED_MODULE_2___default())({\n    clientId: \"d292540e570d4d22b57f58539336c62b\",\n    clientSecret: \"3658db533a1747b9a0cfc20cd6764243\"\n});\nconst useSpotify = ()=>{\n    const { data: session , status  } = (0,next_auth_react__WEBPACK_IMPORTED_MODULE_1__.useSession)();\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{\n        if (session) {\n            if (session.error === 'RefreshAccessTokenError') {\n                (0,next_auth_react__WEBPACK_IMPORTED_MODULE_1__.signIn)();\n            }\n            spotifyApi.setAccessToken(session.user.accessToken);\n        }\n    }, [\n        session\n    ]);\n    return spotifyApi;\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (useSpotify);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ob29rcy91c2VTcG90aWZ5LmpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFBd0M7QUFDVztBQUNIO0FBRWhELEtBQUssQ0FBQ0ssVUFBVSxHQUFHLEdBQUcsQ0FBQ0QsNkRBQWEsQ0FBQyxDQUFDO0lBQ2xDRSxRQUFRLEVBQUVDLGtDQUFpQztJQUMzQ0csWUFBWSxFQUFFSCxrQ0FBcUM7QUFDdkQsQ0FBQztBQUVELEtBQUssQ0FBQ0ssVUFBVSxPQUFTLENBQUM7SUFDdEIsS0FBSyxDQUFDLENBQUMsQ0FBQ0MsSUFBSSxFQUFFQyxPQUFPLEdBQUVDLE1BQU0sRUFBQyxDQUFDLEdBQUdaLDJEQUFVO0lBRTVDRixnREFBUyxLQUFPLENBQUM7UUFDYixFQUFFLEVBQUNhLE9BQU8sRUFBRSxDQUFDO1lBQ1QsRUFBRSxFQUFFQSxPQUFPLENBQUNFLEtBQUssS0FBSyxDQUF5QiwwQkFBRSxDQUFDO2dCQUM5Q2QsdURBQU07WUFDVixDQUFDO1lBQ0RHLFVBQVUsQ0FBQ1ksY0FBYyxDQUFDSCxPQUFPLENBQUNJLElBQUksQ0FBQ0MsV0FBVztRQUN0RCxDQUFDO0lBRUwsQ0FBQyxFQUFFLENBQUNMO1FBQUFBLE9BQU87SUFBQSxDQUFDO0lBRVosTUFBTSxDQUFDVCxVQUFVO0FBQ3JCLENBQUM7QUFFRCxpRUFBZU8sVUFBVSIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL2hvb2tzL3VzZVNwb3RpZnkuanM/NjQ4YyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlRWZmZWN0IH0gZnJvbSAncmVhY3QnXG5pbXBvcnQgeyBzaWduSW4sIHVzZVNlc3Npb259IGZyb20gJ25leHQtYXV0aC9yZWFjdCdcbmltcG9ydCBTcG90aWZ5V2ViQXBpIGZyb20gJ3Nwb3RpZnktd2ViLWFwaS1ub2RlJztcblxuY29uc3Qgc3BvdGlmeUFwaSA9IG5ldyBTcG90aWZ5V2ViQXBpKHtcbiAgICBjbGllbnRJZDogcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQ0xJRU5UX0lELFxuICAgIGNsaWVudFNlY3JldDogcHJvY2Vzcy5lbnYuTkVYVF9QVUJMSUNfQ0xJRU5UX1NFQ1JFVCxcbn0pO1xuXG5jb25zdCB1c2VTcG90aWZ5ID0gKCkgPT4ge1xuICAgIGNvbnN0IHsgZGF0YTogc2Vzc2lvbiwgc3RhdHVzIH0gPSB1c2VTZXNzaW9uKCk7XG5cbiAgICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgICAgICBpZihzZXNzaW9uKSB7XG4gICAgICAgICAgICBpZiAoc2Vzc2lvbi5lcnJvciA9PT0gJ1JlZnJlc2hBY2Nlc3NUb2tlbkVycm9yJykge1xuICAgICAgICAgICAgICAgIHNpZ25JbigpO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgc3BvdGlmeUFwaS5zZXRBY2Nlc3NUb2tlbihzZXNzaW9uLnVzZXIuYWNjZXNzVG9rZW4pO1xuICAgICAgICB9XG5cbiAgICB9LCBbc2Vzc2lvbl0pXG5cbiAgICByZXR1cm4gc3BvdGlmeUFwaTtcbn1cblxuZXhwb3J0IGRlZmF1bHQgdXNlU3BvdGlmeSJdLCJuYW1lcyI6WyJSZWFjdCIsInVzZUVmZmVjdCIsInNpZ25JbiIsInVzZVNlc3Npb24iLCJTcG90aWZ5V2ViQXBpIiwic3BvdGlmeUFwaSIsImNsaWVudElkIiwicHJvY2VzcyIsImVudiIsIk5FWFRfUFVCTElDX0NMSUVOVF9JRCIsImNsaWVudFNlY3JldCIsIk5FWFRfUFVCTElDX0NMSUVOVF9TRUNSRVQiLCJ1c2VTcG90aWZ5IiwiZGF0YSIsInNlc3Npb24iLCJzdGF0dXMiLCJlcnJvciIsInNldEFjY2Vzc1Rva2VuIiwidXNlciIsImFjY2Vzc1Rva2VuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./hooks/useSpotify.js\n");
+
+/***/ }),
+
+/***/ "./lib/time.js":
+/*!*********************!*\
+  !*** ./lib/time.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"millisToMinutesAndSeconds\": () => (/* binding */ millisToMinutesAndSeconds)\n/* harmony export */ });\nfunction millisToMinutesAndSeconds(millis) {\n    const minutes = Math.floor(millis / 60000);\n    const seconds = (millis % 60000 / 1000).toFixed(0);\n    return seconds == 60 ? minutes + 1 + \":00\" : minutes + \":\" + (seconds < 10 ? \"e\" : \"\") + seconds;\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9saWIvdGltZS5qcy5qcyIsIm1hcHBpbmdzIjoiOzs7O0FBQU8sU0FBU0EseUJBQXlCLENBQUNDLE1BQU0sRUFBRSxDQUFDO0lBQy9DLEtBQUssQ0FBQ0MsT0FBTyxHQUFHQyxJQUFJLENBQUNDLEtBQUssQ0FBQ0gsTUFBTSxHQUFHLEtBQUs7SUFDekMsS0FBSyxDQUFDSSxPQUFPLElBQUtKLE1BQU0sR0FBRyxLQUFLLEdBQUksSUFBSSxFQUFFSyxPQUFPLENBQUMsQ0FBQztJQUMvQyxNQUFNLENBQUNELE9BQU8sSUFBSSxFQUFFLEdBQUdILE9BQU8sR0FBRyxDQUFDLEdBQUcsQ0FBSyxPQUFHQSxPQUFPLEdBQUcsQ0FBRyxNQUFJRyxPQUFPLEdBQUcsRUFBRSxHQUFHLENBQUcsS0FBRyxDQUFFLEtBQUlBLE9BQU87QUFDeEcsQ0FBQyIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL2xpYi90aW1lLmpzPzk5ZjkiXSwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGZ1bmN0aW9uIG1pbGxpc1RvTWludXRlc0FuZFNlY29uZHMobWlsbGlzKSB7XG4gICAgY29uc3QgbWludXRlcyA9IE1hdGguZmxvb3IobWlsbGlzIC8gNjAwMDApO1xuICAgIGNvbnN0IHNlY29uZHMgPSAoKG1pbGxpcyAlIDYwMDAwKSAvIDEwMDApLnRvRml4ZWQoMCk7XG4gICAgICAgIHJldHVybiBzZWNvbmRzID09IDYwID8gbWludXRlcyArIDEgKyBcIjowMFwiIDogbWludXRlcyArIFwiOlwiICsgKHNlY29uZHMgPCAxMCA/IFwiZVwiIDogXCJcIikgKyBzZWNvbmRzO1xufSJdLCJuYW1lcyI6WyJtaWxsaXNUb01pbnV0ZXNBbmRTZWNvbmRzIiwibWlsbGlzIiwibWludXRlcyIsIk1hdGgiLCJmbG9vciIsInNlY29uZHMiLCJ0b0ZpeGVkIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./lib/time.js\n");
+
+/***/ }),
+
+/***/ "./pages/index.tsx":
+/*!*************************!*\
+  !*** ./pages/index.tsx ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"getServerSideProps\": () => (/* binding */ getServerSideProps)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_Sidebar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Sidebar */ \"./components/Sidebar.jsx\");\n/* harmony import */ var _components_Center__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Center */ \"./components/Center.jsx\");\n/* harmony import */ var _components_Player__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Player */ \"./components/Player.jsx\");\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next-auth/react */ \"next-auth/react\");\n/* harmony import */ var next_auth_react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_auth_react__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\nconst Home = ()=>{\n    return(/*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        className: \"bg-black h-screen overflow-hidden\",\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"main\", {\n                className: \"flex\",\n                children: [\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_Sidebar__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {}, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/pages/index.tsx\",\n                        lineNumber: 13,\n                        columnNumber: 9\n                    }, undefined),\n                    /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_Center__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {}, void 0, false, {\n                        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/pages/index.tsx\",\n                        lineNumber: 14,\n                        columnNumber: 9\n                    }, undefined)\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/pages/index.tsx\",\n                lineNumber: 12,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                className: \"sticky bottom-0\",\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_components_Player__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {}, void 0, false, {\n                    fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/pages/index.tsx\",\n                    lineNumber: 18,\n                    columnNumber: 9\n                }, undefined)\n            }, void 0, false, {\n                fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/pages/index.tsx\",\n                lineNumber: 17,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/luna.c/Documents/GitHub/spotify-clone/pages/index.tsx\",\n        lineNumber: 11,\n        columnNumber: 5\n    }, undefined));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);\nasync function getServerSideProps(context) {\n    const session = await (0,next_auth_react__WEBPACK_IMPORTED_MODULE_4__.getSession)(context);\n    return {\n        props: {\n            session\n        }\n    };\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9pbmRleC50c3guanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7OztBQUcyQztBQUNGO0FBQ0E7QUFDRztBQUU1QyxLQUFLLENBQUNJLElBQUksT0FBbUIsQ0FBQztJQUM1QixNQUFNLDZFQUNIQyxDQUFHO1FBQUNDLFNBQVMsRUFBQyxDQUFtQzs7d0ZBQy9DQyxDQUFJO2dCQUFDRCxTQUFTLEVBQUMsQ0FBTTs7Z0dBQ25CTiwyREFBTzs7Ozs7Z0dBQ1BDLDBEQUFNOzs7Ozs7Ozs7Ozt3RkFHUkksQ0FBRztnQkFBQ0MsU0FBUyxFQUFDLENBQWlCO3NHQUM3QkosMERBQU07Ozs7Ozs7Ozs7Ozs7Ozs7QUFJZixDQUFDO0FBRUQsaUVBQWVFLElBQUk7QUFFWixlQUFlSSxrQkFBa0IsQ0FBQ0MsT0FBWSxFQUFFLENBQUM7SUFDdEQsS0FBSyxDQUFDQyxPQUFPLEdBQUcsS0FBSyxDQUFDUCwyREFBVSxDQUFDTSxPQUFPO0lBRXhDLE1BQU0sQ0FBQyxDQUFDO1FBQ05FLEtBQUssRUFBRSxDQUFDO1lBQ05ELE9BQU87UUFDVCxDQUFDO0lBQ0gsQ0FBQztBQUNILENBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9pbmRleC50c3g/MDdmZiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgdHlwZSB7IE5leHRQYWdlIH0gZnJvbSAnbmV4dCdcbmltcG9ydCBIZWFkIGZyb20gJ25leHQvaGVhZCdcbmltcG9ydCBJbWFnZSBmcm9tICduZXh0L2ltYWdlJ1xuaW1wb3J0IFNpZGViYXIgZnJvbSAnLi4vY29tcG9uZW50cy9TaWRlYmFyJ1xuaW1wb3J0IENlbnRlciBmcm9tICcuLi9jb21wb25lbnRzL0NlbnRlcidcbmltcG9ydCBQbGF5ZXIgZnJvbSAnLi4vY29tcG9uZW50cy9QbGF5ZXInXG5pbXBvcnQgeyBnZXRTZXNzaW9uIH0gZnJvbSAnbmV4dC1hdXRoL3JlYWN0J1xuXG5jb25zdCBIb21lOiBOZXh0UGFnZSA9ICgpID0+IHtcbiAgcmV0dXJuIChcbiAgICA8ZGl2IGNsYXNzTmFtZT1cImJnLWJsYWNrIGgtc2NyZWVuIG92ZXJmbG93LWhpZGRlblwiPiAgICAgIFxuICAgICAgPG1haW4gY2xhc3NOYW1lPSdmbGV4Jz5cbiAgICAgICAgPFNpZGViYXIgLz5cbiAgICAgICAgPENlbnRlciAvPlxuICAgICAgPC9tYWluPlxuICAgICAgXG4gICAgICA8ZGl2IGNsYXNzTmFtZT0nc3RpY2t5IGJvdHRvbS0wJz5cbiAgICAgICAgPFBsYXllciAvPlxuICAgICAgPC9kaXY+XG4gICAgPC9kaXY+XG4gIClcbn1cblxuZXhwb3J0IGRlZmF1bHQgSG9tZVxuXG5leHBvcnQgYXN5bmMgZnVuY3Rpb24gZ2V0U2VydmVyU2lkZVByb3BzKGNvbnRleHQ6IGFueSkge1xuICBjb25zdCBzZXNzaW9uID0gYXdhaXQgZ2V0U2Vzc2lvbihjb250ZXh0KTtcblxuICByZXR1cm4ge1xuICAgIHByb3BzOiB7XG4gICAgICBzZXNzaW9uLFxuICAgIH1cbiAgfVxufSJdLCJuYW1lcyI6WyJTaWRlYmFyIiwiQ2VudGVyIiwiUGxheWVyIiwiZ2V0U2Vzc2lvbiIsIkhvbWUiLCJkaXYiLCJjbGFzc05hbWUiLCJtYWluIiwiZ2V0U2VydmVyU2lkZVByb3BzIiwiY29udGV4dCIsInNlc3Npb24iLCJwcm9wcyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./pages/index.tsx\n");
+
+/***/ }),
+
+/***/ "@heroicons/react/outline":
+/*!*******************************************!*\
+  !*** external "@heroicons/react/outline" ***!
+  \*******************************************/
+/***/ ((module) => {
+
+module.exports = require("@heroicons/react/outline");
+
+/***/ }),
+
+/***/ "@heroicons/react/solid":
+/*!*****************************************!*\
+  !*** external "@heroicons/react/solid" ***!
+  \*****************************************/
+/***/ ((module) => {
+
+module.exports = require("@heroicons/react/solid");
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = require("lodash");
+
+/***/ }),
+
+/***/ "next-auth/react":
+/*!**********************************!*\
+  !*** external "next-auth/react" ***!
+  \**********************************/
 /***/ ((module) => {
 
 module.exports = require("next-auth/react");
 
 /***/ }),
 
-/***/ 689:
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/***/ ((module) => {
+
+module.exports = require("next/head");
+
+/***/ }),
+
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
 /***/ ((module) => {
 
 module.exports = require("react");
 
 /***/ }),
 
-/***/ 997:
+/***/ "react/jsx-dev-runtime":
+/*!****************************************!*\
+  !*** external "react/jsx-dev-runtime" ***!
+  \****************************************/
 /***/ ((module) => {
 
-module.exports = require("react/jsx-runtime");
+module.exports = require("react/jsx-dev-runtime");
 
 /***/ }),
 
-/***/ 755:
+/***/ "recoil":
+/*!*************************!*\
+  !*** external "recoil" ***!
+  \*************************/
 /***/ ((module) => {
 
 module.exports = require("recoil");
+
+/***/ }),
+
+/***/ "spotify-web-api-node":
+/*!***************************************!*\
+  !*** external "spotify-web-api-node" ***!
+  \***************************************/
+/***/ ((module) => {
+
+module.exports = require("spotify-web-api-node");
 
 /***/ })
 
@@ -621,7 +220,7 @@ module.exports = require("recoil");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__(522));
+var __webpack_exports__ = (__webpack_exec__("./pages/index.tsx"));
 module.exports = __webpack_exports__;
 
 })();

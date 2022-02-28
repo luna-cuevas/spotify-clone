@@ -47,10 +47,6 @@ const Center = () => {
                 <img className='rounded-full w-10 h-10' src={session?.user?.image} alt="" />
                 <h2>{session?.user.name}</h2>
                 <ChevronDownIcon className='h-5 w-5' />
-                {/* <ul className='w-28 absolute top-12 left-8 bg-black space-x-3 opacity-90 
-                hover:opacity-80 cursor-pointer p-1 pr-2 text-white flex center'>
-                    <li className='flex-grow center text-center'>Sign Out</li>
-                </ul> */}
             </div>
         </header>
         <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}>
