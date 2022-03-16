@@ -1,27 +1,11 @@
-# Next.js + Tailwind CSS Example
+Hey, I made this project with the intent of learning new tech. In particular, I was curious to learn how to use TailwindCSS and I'm also continuing my studies on Next.js and NextAuth. 
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+The goal of this project was to create a spotify clone and use the Spotify API to remotely control the app. To do this I would need to create a login screen/button to validate a user's id and authentication token and then communicate with the Spotify API. Once the user's token is validated, they will be forwarded to the main screen for the app. 
 
-## Preview
+The main screen uses Tailwind classes to give a pretty close representation of the Spotify app. The power of Tailwind is that instead of manually setting media breakpoints, you only need to set classes like "sm:space-x-3" which translates to "on small screens, set padding to 3 pixels." Additionally, I found that the time I would normally spend on styling could be used to make the app better. 
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+Challenges I currently am working through is getting the prev/next buttons to function correctly. It seems like the node wrapper I used for the Spotify API needs to be updated and the next() and prev() functions don't work as intended. I looked up the issue and it seems that their team is working on it. Instead of scrapping this project, I'm spending time reading through the Spotify API docs to see if I can just make that call myself. 
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+Next steps on this are to integrate an audio visualizer using P5, a javascript library that converts audio into points on a graph. P5 also allows for more visual control meaning there is potential to make the visualizer interactive. 
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+You can see a live demo here: https://spotify-clone-luna-cuevas.vercel.app/login 
